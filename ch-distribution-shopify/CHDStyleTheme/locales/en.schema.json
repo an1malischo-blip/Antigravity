@@ -33,6 +33,29 @@
     "theme": "Theme",
     "typography": "Typography"
   },
+  "customers": {
+    "login": {
+      "title": "Customer login"
+    },
+    "register": {
+      "title": "Registration"
+    },
+    "account": {
+      "title": "Customer account"
+    },
+    "orders": {
+      "title": "Order details"
+    },
+    "addresses": {
+      "title": "Addresses"
+    },
+    "reset_password": {
+      "title": "Reset password"
+    },
+    "activate": {
+      "title": "Activate account"
+    }
+  },
   "labels": {
     "alignment": "Alignment",
     "background": "Background",
@@ -232,6 +255,27 @@
         "moq_info": "e.g. \"From 1 carton\"",
         "inquiry_email": "Inquiry email address"
       }
+    },
+    "customer_login": {
+      "name": "Customer login"
+    },
+    "customer_register": {
+      "name": "Registration"
+    },
+    "customer_account": {
+      "name": "Customer account"
+    },
+    "customer_order": {
+      "name": "Order details"
+    },
+    "customer_addresses": {
+      "name": "Addresses"
+    },
+    "customer_reset_password": {
+      "name": "Reset password"
+    },
+    "customer_activate_account": {
+      "name": "Activate account"
     },
     "featured_collections": {
       "name": "Featured collections",

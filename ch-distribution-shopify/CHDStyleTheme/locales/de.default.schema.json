@@ -33,6 +33,29 @@
     "theme": "Theme",
     "typography": "Typografie"
   },
+  "customers": {
+    "login": {
+      "title": "Kunden-Login"
+    },
+    "register": {
+      "title": "Registrierung"
+    },
+    "account": {
+      "title": "Kundenkonto"
+    },
+    "orders": {
+      "title": "Bestelldetails"
+    },
+    "addresses": {
+      "title": "Adressen"
+    },
+    "reset_password": {
+      "title": "Passwort zurücksetzen"
+    },
+    "activate": {
+      "title": "Konto aktivieren"
+    }
+  },
   "labels": {
     "alignment": "Ausrichtung",
     "background": "Hintergrund",
@@ -232,6 +255,27 @@
         "moq_info": "z. B. Ab 1 Karton bestellbar",
         "inquiry_email": "E-Mail für Anfragen"
       }
+    },
+    "customer_login": {
+      "name": "Kunden-Login"
+    },
+    "customer_register": {
+      "name": "Registrierung"
+    },
+    "customer_account": {
+      "name": "Kundenkonto"
+    },
+    "customer_order": {
+      "name": "Bestelldetails"
+    },
+    "customer_addresses": {
+      "name": "Adressen"
+    },
+    "customer_reset_password": {
+      "name": "Passwort zurücksetzen"
+    },
+    "customer_activate_account": {
+      "name": "Konto aktivieren"
     },
     "featured_collections": {
       "name": "Ausgewählte Kollektionen",

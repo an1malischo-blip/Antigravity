@@ -33,6 +33,29 @@
     "theme": "Thème",
     "typography": "Typographie"
   },
+  "customers": {
+    "login": {
+      "title": "Connexion client"
+    },
+    "register": {
+      "title": "Inscription"
+    },
+    "account": {
+      "title": "Compte client"
+    },
+    "orders": {
+      "title": "Détails de la commande"
+    },
+    "addresses": {
+      "title": "Adresses"
+    },
+    "reset_password": {
+      "title": "Réinitialiser le mot de passe"
+    },
+    "activate": {
+      "title": "Activer le compte"
+    }
+  },
   "labels": {
     "alignment": "Alignement",
     "background": "Arrière-plan",
@@ -232,6 +255,27 @@
         "moq_info": "ex. « À partir de 1 carton »",
         "inquiry_email": "E-mail pour les demandes"
       }
+    },
+    "customer_login": {
+      "name": "Connexion client"
+    },
+    "customer_register": {
+      "name": "Inscription"
+    },
+    "customer_account": {
+      "name": "Compte client"
+    },
+    "customer_order": {
+      "name": "Détails de la commande"
+    },
+    "customer_addresses": {
+      "name": "Adresses"
+    },
+    "customer_reset_password": {
+      "name": "Réinitialiser le mot de passe"
+    },
+    "customer_activate_account": {
+      "name": "Activer le compte"
     },
     "featured_collections": {
       "name": "Collections en vedette",

@@ -33,6 +33,29 @@
     "theme": "Tema",
     "typography": "Tipografía"
   },
+  "customers": {
+    "login": {
+      "title": "Inicio de sesión"
+    },
+    "register": {
+      "title": "Registro"
+    },
+    "account": {
+      "title": "Cuenta del cliente"
+    },
+    "orders": {
+      "title": "Detalles del pedido"
+    },
+    "addresses": {
+      "title": "Direcciones"
+    },
+    "reset_password": {
+      "title": "Restablecer contraseña"
+    },
+    "activate": {
+      "title": "Activar cuenta"
+    }
+  },
   "labels": {
     "alignment": "Alineación",
     "background": "Fondo",
@@ -232,6 +255,27 @@
         "moq_info": "ej. \"Desde 1 caja\"",
         "inquiry_email": "Correo para consultas"
       }
+    },
+    "customer_login": {
+      "name": "Inicio de sesión"
+    },
+    "customer_register": {
+      "name": "Registro"
+    },
+    "customer_account": {
+      "name": "Cuenta del cliente"
+    },
+    "customer_order": {
+      "name": "Detalles del pedido"
+    },
+    "customer_addresses": {
+      "name": "Direcciones"
+    },
+    "customer_reset_password": {
+      "name": "Restablecer contraseña"
+    },
+    "customer_activate_account": {
+      "name": "Activar cuenta"
     },
     "featured_collections": {
       "name": "Colecciones destacadas",
