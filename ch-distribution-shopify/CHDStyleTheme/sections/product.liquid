@@ -1,0 +1,942 @@
+{% comment %}
+  CH Distribution — Produktseite (B2B)
+  Optimiert für B2B: Vertrauenswürdige Informationsreihenfolge,
+  VPE-Hinweise, klare CTA-Struktur, mobile Optimierung.
+{% endcomment %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="product-page">
+
+  {%- comment -%} ── LINKE SPALTE: Bilder ── {%- endcomment -%}
+  <div class="product-gallery">
+
+    {%- comment -%} Hauptbild {%- endcomment -%}
+    <div class="product-gallery__main" id="product-main-image">
+      {%- if product.featured_image -%}
+        {%- assign main_image = current_variant.featured_image | default: product.featured_image -%}
+        {% render 'image',
+          image: main_image,
+          class: 'product-gallery__main-img',
+          width: 800,
+          height: 800
+        %}
+      {%- else -%}
+        <div class="product-gallery__placeholder">
+          <span>{{ 'products.product.no_image' | t }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Thumbnail-Bilder {%- endcomment -%}
+    {%- if product.images.size > 1 -%}
+      <div class="product-gallery__thumbs">
+        {%- for image in product.images limit: 6 -%}
+          <button
+            class="product-gallery__thumb-btn{% if forloop.first %} is-active{% endif %}"
+            data-image-url="{{ image | image_url: width: 800 }}"
+            data-thumb-index="{{ forloop.index0 }}"
+            aria-label="{{ 'products.product.image_number' | t: number: forloop.index }}"
+          >
+            {% render 'image',
+              image: image,
+              class: 'product-gallery__thumb-img',
+              width: 120,
+              height: 120,
+              crop: 'center'
+            %}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+
+  {%- comment -%} ── RECHTE SPALTE: Infos & Formular ── {%- endcomment -%}
+  <div class="product-info">
+
+    {%- comment -%} 1. Kategorie / Breadcrumb {%- endcomment -%}
+    {%- if product.collections.size > 0 -%}
+      <p class="product-info__category">
+        <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+      </p>
+    {%- endif -%}
+
+    {%- comment -%} 2. Produkttitel (Serif) {%- endcomment -%}
+    <h1 class="product-info__title">{{ product.title }}</h1>
+
+    {%- comment -%} 3. SKU + Hersteller Zeile {%- endcomment -%}
+    <div class="product-info__identifiers">
+      {%- if current_variant.sku != blank -%}
+        <span class="product-info__sku">
+          <span class="product-info__sku-label">{{ 'products.product.sku' | t }}:</span>
+          <span class="product-info__sku-value" id="product-sku">{{ current_variant.sku }}</span>
+        </span>
+      {%- endif -%}
+      {%- if product.vendor != blank -%}
+        <span class="product-info__vendor">
+          <span class="product-info__sku-label">{{ 'products.product.vendor' | t }}:</span>
+          <span>{{ product.vendor }}</span>
+        </span>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} 4. Verfügbarkeit {%- endcomment -%}
+    <div class="product-info__availability" id="product-availability">
+      {%- if current_variant.available -%}
+        <span class="product-info__stock product-info__stock--in">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <circle cx="5" cy="5" r="5" fill="#22c55e"/>
+          </svg>
+          {{ 'products.product.in_stock' | t }}
+        </span>
+      {%- else -%}
+        <span class="product-info__stock product-info__stock--out">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <circle cx="5" cy="5" r="5" fill="#ef4444"/>
+          </svg>
+          {{ 'products.product.sold_out' | t }}
+        </span>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} 5. Preis {%- endcomment -%}
+    <div class="product-info__pricing">
+      {%- if current_variant.compare_at_price > current_variant.price -%}
+        <span class="product-info__price-original">{{ current_variant.compare_at_price | money }}</span>
+        <span class="product-info__price product-info__price--sale" id="product-price">{{ current_variant.price | money }}</span>
+        <span class="product-info__badge">{{ 'products.product.sale' | t }}</span>
+      {%- else -%}
+        <span class="product-info__price" id="product-price">{{ current_variant.price | money }}</span>
+      {%- endif -%}
+      <span class="product-info__tax-note">{{ 'products.product.tax_note' | t }}</span>
+    </div>
+
+    {%- comment -%} 6. VPE / Verpackungseinheit Info-Box {%- endcomment -%}
+    {%- if section.settings.vpe_text != blank -%}
+      <div class="product-info__vpe">
+        <div class="product-info__vpe-row">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          <span>{{ section.settings.vpe_text }}</span>
+        </div>
+        {%- if section.settings.moq_text != blank -%}
+          <div class="product-info__vpe-row">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>{{ section.settings.moq_text }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── KAUFFORMULAR ── {%- endcomment -%}
+    {% form 'product', product, id: 'product-form', novalidate: true %}
+
+      {%- comment -%} 7. Varianten {%- endcomment -%}
+      {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+          <div class="product-form__option-group">
+            <p class="product-form__option-label">{{ option.name }}</p>
+            <div class="product-form__option-buttons" id="option-{{ forloop.index }}">
+              {%- for value in option.values -%}
+                <label class="product-form__option-btn">
+                  <input
+                    type="radio"
+                    name="{{ option.name }}"
+                    value="{{ value }}"
+                    {% if option.selected_value == value %}checked{% endif %}
+                    class="product-form__option-radio"
+                  >
+                  <span class="product-form__option-text">{{ value }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <input type="hidden" name="id" id="variant-id" value="{{ current_variant.id }}">
+      {%- else -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+      {%- endunless -%}
+
+      {%- comment -%} 8. Menge + CTA auf einer Zeile (Desktop) {%- endcomment -%}
+      <div class="product-form__action-row">
+        <div class="product-form__quantity">
+          <label class="product-form__quantity-label" for="quantity">{{ 'products.product.quantity' | t }}</label>
+          <div class="product-form__quantity-control">
+            <button type="button" class="product-form__qty-btn" id="qty-minus" aria-label="{{ 'products.product.decrease_quantity' | t }}">−</button>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="1"
+              class="product-form__qty-input"
+              aria-label="{{ 'products.product.quantity' | t }}"
+            >
+            <button type="button" class="product-form__qty-btn" id="qty-plus" aria-label="{{ 'products.product.increase_quantity' | t }}">+</button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          name="add"
+          class="product-form__submit btn btn--primary"
+          {%- unless current_variant.available -%} disabled{%- endunless -%}
+          id="add-to-cart-btn"
+        >
+          {%- if current_variant.available -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </button>
+      </div>
+
+      {%- comment -%} Zusätzlicher Anfrage-Button {%- endcomment -%}
+      {%- if section.settings.inquiry_email != blank -%}
+        <a
+          href="mailto:{{ section.settings.inquiry_email }}?subject={{ 'products.product.inquiry_subject' | t | url_encode }}%20{{ product.title | url_encode }}"
+          class="btn btn--secondary product-form__inquiry"
+        >
+          {{ 'products.product.send_inquiry' | t }}
+        </a>
+      {%- endif -%}
+
+    {% endform %}
+
+    {%- comment -%} 9. Trust-Elemente / USP-Icons {%- endcomment -%}
+    <div class="product-info__trust">
+      <div class="product-info__trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span>{{ 'products.product.trust_eu' | t }}</span>
+      </div>
+      <div class="product-info__trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="13" x="6" y="4" rx="2"/><path d="m2 7 4-3"/><path d="m22 7-4-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M12 12h.01"/></svg>
+        <span>{{ 'products.product.trust_shipping' | t }}</span>
+      </div>
+      <div class="product-info__trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+        <span>{{ 'products.product.trust_b2b' | t }}</span>
+      </div>
+    </div>
+
+    {%- comment -%} Trennlinie {%- endcomment -%}
+    <hr class="product-info__divider">
+
+    {%- comment -%} 10. Produktbeschreibung {%- endcomment -%}
+    {%- if product.description != blank -%}
+      <div class="product-info__description rte">
+        <h2 class="product-info__description-title">{{ 'products.product.description' | t }}</h2>
+        {{ product.description }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} 11. Meta-Tabelle {%- endcomment -%}
+    <div class="product-info__meta">
+      {%- if product.vendor != blank -%}
+        <div class="product-info__meta-row">
+          <span class="product-info__meta-label">{{ 'products.product.vendor' | t }}</span>
+          <span class="product-info__meta-value">{{ product.vendor }}</span>
+        </div>
+      {%- endif -%}
+      {%- if product.type != blank -%}
+        <div class="product-info__meta-row">
+          <span class="product-info__meta-label">{{ 'products.product.type' | t }}</span>
+          <span class="product-info__meta-value">{{ product.type }}</span>
+        </div>
+      {%- endif -%}
+      {%- if current_variant.sku != blank -%}
+        <div class="product-info__meta-row">
+          <span class="product-info__meta-label">{{ 'products.product.sku' | t }}</span>
+          <span class="product-info__meta-value">{{ current_variant.sku }}</span>
+        </div>
+      {%- endif -%}
+      {%- if current_variant.barcode != blank -%}
+        <div class="product-info__meta-row">
+          <span class="product-info__meta-label">{{ 'products.product.barcode' | t }}</span>
+          <span class="product-info__meta-value">{{ current_variant.barcode }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>{%- comment -%} /product-info {%- endcomment -%}
+
+</div>{%- comment -%} /product-page {%- endcomment -%}
+
+{%- comment -%} ── STICKY MOBILE ADD-TO-CART BAR ── {%- endcomment -%}
+<div class="product-sticky-bar" id="product-sticky-bar">
+  <div class="product-sticky-bar__inner">
+    <div class="product-sticky-bar__info">
+      <span class="product-sticky-bar__title">{{ product.title | truncate: 30 }}</span>
+      <span class="product-sticky-bar__price" id="sticky-price">{{ current_variant.price | money }}</span>
+    </div>
+    <button
+      type="button"
+      class="btn btn--primary product-sticky-bar__btn"
+      id="sticky-add-btn"
+      {%- unless current_variant.available -%} disabled{%- endunless -%}
+    >
+      {{ 'products.product.add_to_cart' | t }}
+    </button>
+  </div>
+</div>
+
+
+{% stylesheet %}
+/* ====================================================
+   CH DISTRIBUTION — PRODUKTSEITE (B2B)
+   Mobile-first, optimiert für B2B
+==================================================== */
+
+/* --- Seitenlayout --- */
+.product-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0 6rem;
+}
+
+@media (min-width: 768px) {
+  .product-page {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    padding-bottom: 3rem;
+  }
+}
+
+/* --- Bildbereich --- */
+.product-gallery__main {
+  background-color: var(--color-background-secondary);
+  border-radius: var(--style-border-radius-cards);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-gallery__main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-gallery__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Thumbnails: horizontal scroll on mobile */
+.product-gallery__thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+
+.product-gallery__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.product-gallery__thumb-btn {
+  flex-shrink: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--style-border-radius-cards);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--color-background-secondary);
+  padding: 0;
+  transition: border-color 0.15s ease;
+}
+
+@media (min-width: 768px) {
+  .product-gallery__thumbs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .product-gallery__thumb-btn {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.product-gallery__thumb-btn:hover,
+.product-gallery__thumb-btn.is-active {
+  border-color: var(--color-accent);
+}
+
+.product-gallery__thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Info-Bereich --- */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Kategorie */
+.product-info__category {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-info__category a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Produkttitel — Serif */
+.product-info__title {
+  font-family: var(--font-heading--family);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .product-info__title {
+    font-size: 2.2rem;
+  }
+}
+
+/* SKU + Hersteller Zeile */
+.product-info__identifiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.product-info__sku,
+.product-info__vendor {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+.product-info__sku-label {
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+/* Verfügbarkeit */
+.product-info__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.product-info__stock--in { color: #16a34a; }
+.product-info__stock--out { color: #dc2626; }
+
+/* Preis */
+.product-info__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.product-info__price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+.product-info__price--sale {
+  color: #dc2626;
+}
+
+.product-info__price-original {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.product-info__badge {
+  background-color: #dc2626;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.product-info__tax-note {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  width: 100%;
+}
+
+/* --- VPE / Verpackungseinheit Info-Box --- */
+.product-info__vpe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--style-border-radius-cards);
+  border-left: 3px solid var(--color-accent);
+}
+
+.product-info__vpe-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+
+.product-info__vpe-row svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* --- Varianten-Buttons --- */
+.product-form__option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-form__option-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: var(--color-foreground);
+}
+
+.product-form__option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.product-form__option-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.product-form__option-btn {
+  cursor: pointer;
+}
+
+.product-form__option-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: var(--style-border-radius-buttons);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  min-height: 2.75rem;
+}
+
+.product-form__option-radio:checked + .product-form__option-text {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.product-form__option-text:hover {
+  border-color: var(--color-accent);
+}
+
+/* --- Menge + CTA Zeile --- */
+.product-form__action-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .product-form__action-row {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+}
+
+.product-form__quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.product-form__quantity-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.product-form__quantity-control {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 2px solid #d1d5db;
+  border-radius: var(--style-border-radius-buttons);
+  overflow: hidden;
+}
+
+.product-form__qty-btn {
+  width: 2.75rem;
+  height: 3rem;
+  background: var(--color-background-secondary);
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  transition: background-color 0.15s ease;
+}
+
+.product-form__qty-btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.product-form__qty-input {
+  width: 4rem;
+  height: 3rem;
+  text-align: center;
+  border: none;
+  border-left: 2px solid #d1d5db;
+  border-right: 2px solid #d1d5db;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  -moz-appearance: textfield;
+}
+
+.product-form__qty-input::-webkit-outer-spin-button,
+.product-form__qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  border-radius: var(--style-border-radius-buttons);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+  text-decoration: none;
+  min-height: 3rem;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+  flex: 1;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .btn--primary {
+    width: auto;
+  }
+}
+
+.btn--primary:hover:not([disabled]) {
+  background-color: #162e78;
+  border-color: #162e78;
+}
+
+.btn--primary[disabled] {
+  background-color: #9ca3af;
+  border-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  width: 100%;
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.product-form__inquiry {
+  margin-top: -0.25rem;
+}
+
+/* --- Trust-Elemente --- */
+.product-info__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding: 1rem 0;
+}
+
+.product-info__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.product-info__trust-item svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* --- Trennlinie --- */
+.product-info__divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 0.25rem 0;
+}
+
+/* --- Beschreibung --- */
+.product-info__description-title {
+  font-family: var(--font-heading--family);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--color-foreground);
+}
+
+.rte p,
+.rte ul,
+.rte ol {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.rte ul,
+.rte ol {
+  padding-left: 1.25rem;
+}
+
+/* --- Meta-Tabelle --- */
+.product-info__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.875rem 1rem;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--style-border-radius-cards);
+}
+
+.product-info__meta-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.product-info__meta-label {
+  font-weight: 700;
+  min-width: 8rem;
+  color: var(--color-foreground);
+}
+
+.product-info__meta-value {
+  color: #6b7280;
+}
+
+/* --- Sticky Mobile Add-to-Cart Bar --- */
+.product-sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background-color: var(--color-background);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  padding: 0.75rem var(--page-margin);
+}
+
+.product-sticky-bar.is-visible {
+  transform: translateY(0);
+}
+
+.product-sticky-bar__inner {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.product-sticky-bar__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.product-sticky-bar__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-sticky-bar__price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.product-sticky-bar__btn {
+  flex-shrink: 0;
+  width: auto;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.85rem;
+  min-height: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .product-sticky-bar {
+    display: none;
+  }
+
+  .product-page {
+    padding-bottom: 3rem;
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+  // ── Mengen-Buttons: + und - ──
+  const qtyInput = document.getElementById('quantity');
+  const qtyMinus = document.getElementById('qty-minus');
+  const qtyPlus  = document.getElementById('qty-plus');
+
+  if (qtyInput && qtyMinus && qtyPlus) {
+    qtyMinus.addEventListener('click', function() {
+      var current = parseInt(qtyInput.value, 10);
+      if (current > 1) qtyInput.value = current - 1;
+    });
+    qtyPlus.addEventListener('click', function() {
+      qtyInput.value = parseInt(qtyInput.value, 10) + 1;
+    });
+  }
+
+  // ── Thumbnail-Bilder: Hauptbild wechseln ──
+  var thumbBtns = document.querySelectorAll('.product-gallery__thumb-btn');
+  var mainImg   = document.querySelector('.product-gallery__main-img');
+
+  thumbBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      thumbBtns.forEach(function(b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      if (mainImg) {
+        mainImg.src = btn.dataset.imageUrl;
+      }
+    });
+  });
+
+  // ── Sticky Add-to-Cart Bar (nur Mobile) ──
+  var stickyBar = document.getElementById('product-sticky-bar');
+  var addBtn    = document.getElementById('add-to-cart-btn');
+  var productForm = document.getElementById('product-form');
+
+  if (stickyBar && addBtn) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          stickyBar.classList.remove('is-visible');
+        } else {
+          stickyBar.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(addBtn);
+
+    // Sticky-Button klickt den echten Submit-Button
+    var stickyAddBtn = document.getElementById('sticky-add-btn');
+    if (stickyAddBtn && productForm) {
+      stickyAddBtn.addEventListener('click', function() {
+        addBtn.click();
+      });
+    }
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.product.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "vpe_text",
+      "label": "t:sections.product.schema.vpe_text",
+      "info": "t:sections.product.schema.vpe_info"
+    },
+    {
+      "type": "text",
+      "id": "moq_text",
+      "label": "t:sections.product.schema.moq_text",
+      "info": "t:sections.product.schema.moq_info"
+    },
+    {
+      "type": "text",
+      "id": "inquiry_email",
+      "label": "t:sections.product.schema.inquiry_email",
+      "default": "info@chdistribution.com"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

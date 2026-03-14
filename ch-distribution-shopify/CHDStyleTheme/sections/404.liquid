@@ -1,0 +1,84 @@
+{% comment %}
+  CH Distribution — 404 Fehlerseite
+{% endcomment %}
+
+<div class="error-page">
+  <div class="error-page__icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+  </div>
+  <h1 class="error-page__title">{{ '404.title' | t }}</h1>
+  <p class="error-page__text">{{ '404.not_found' | t }}</p>
+  <a href="{{ routes.root_url }}" class="error-page__btn btn btn--primary">
+    {{ '404.back_to_shopping' | t }}
+  </a>
+</div>
+
+{% stylesheet %}
+.error-page {
+  text-align: center;
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-page__icon {
+  color: #d1d5db;
+}
+
+.error-page__title {
+  font-family: var(--font-heading--family);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.error-page__text {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  max-width: 24rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: var(--style-border-radius-buttons);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: inherit;
+  text-decoration: none;
+  min-height: 3rem;
+  margin-top: 0.5rem;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background-color: #162e78;
+  border-color: #162e78;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.404",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

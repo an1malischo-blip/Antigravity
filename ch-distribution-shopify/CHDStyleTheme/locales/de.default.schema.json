@@ -1,0 +1,252 @@
+{
+  "general": {
+    "404": "Nicht gefunden",
+    "article": "Artikel",
+    "block": "Block",
+    "blog": "Blog",
+    "cart": "Warenkorb",
+    "collection": "Kollektion",
+    "collections": "Kollektionen",
+    "collection_card": "Kollektionskarte",
+    "collections_grid": "Kollektionsraster",
+    "colors": "Farben",
+    "column": "Spalte",
+    "content": "Inhalt",
+    "custom_section": "Eigener Bereich",
+    "fonts": "Schriften",
+    "footer": "Footer",
+    "group": "Gruppe",
+    "header": "Header",
+    "layout": "Layout",
+    "main": "Hauptbereich",
+    "page": "Seite",
+    "password": "Passwort",
+    "primary": "Primär",
+    "product": "Produkt",
+    "row": "Zeile",
+    "search": "Suche",
+    "secondary": "Sekundär",
+    "section": "Bereich",
+    "settings": "Einstellungen",
+    "sidebar": "Seitenleiste",
+    "text": "Text",
+    "theme": "Theme",
+    "typography": "Typografie"
+  },
+  "labels": {
+    "alignment": "Ausrichtung",
+    "background": "Hintergrund",
+    "foreground": "Vordergrund",
+    "grid_gap": "Rasterabstand",
+    "grid_item_width": "Rasterelementbreite",
+    "input_corner_radius": "Eckenradius Eingabefelder",
+    "layout_direction": "Layoutrichtung",
+    "menu": "Menü",
+    "customer_account_menu": "Kundenkontenmenü",
+    "padding": "Abstand",
+    "page_margin": "Seitenrand",
+    "page_width": "Seitenbreite",
+    "show_payment_icons": "Zahlungssymbole anzeigen",
+    "text_style": "Textstil",
+    "text": "Text"
+  },
+  "options": {
+    "alignment": {
+      "left": "Links",
+      "center": "Zentriert",
+      "right": "Rechts"
+    },
+    "direction": {
+      "horizontal": "Horizontal",
+      "vertical": "Vertikal"
+    },
+    "page_width": {
+      "narrow": "Schmal",
+      "wide": "Breit"
+    },
+    "size": {
+      "large": "Groß",
+      "small": "Klein"
+    },
+    "text_style": {
+      "title": "Titel",
+      "subtitle": "Untertitel",
+      "normal": "Normaler Text"
+    }
+  },
+  "sections": {
+    "hero": {
+      "name": "Hero-Banner",
+      "settings": {
+        "background_image": "Hintergrundbild",
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift",
+        "subheading": "Unterüberschrift",
+        "button_label": "Button-Text",
+        "button_link": "Button-Link",
+        "button_secondary_label": "Zweiter Button-Text",
+        "button_secondary_link": "Zweiter Button-Link"
+      }
+    },
+    "usp_bar": {
+      "name": "USP-Leiste",
+      "blocks": {
+        "item": {
+          "name": "Vorteil",
+          "settings": {
+            "icon": "Symbol",
+            "title": "Titel",
+            "description": "Beschreibung"
+          }
+        }
+      }
+    },
+    "footer": {
+      "schema": {
+        "logo": "Logo",
+        "description": "Beschreibung",
+        "menu": "Navigationsmenü",
+        "menu_2": "Rechtliches-Menü",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "address": "Adresse"
+      }
+    },
+    "about": {
+      "name": "Über uns",
+      "settings": {
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift",
+        "description": "Beschreibung"
+      },
+      "blocks": {
+        "stat": {
+          "name": "Kennzahl",
+          "settings": {
+            "value": "Wert",
+            "label": "Bezeichnung"
+          }
+        }
+      }
+    },
+    "brand_marquee": {
+      "name": "Marken-Laufband",
+      "settings": {
+        "heading": "Überschrift"
+      },
+      "blocks": {
+        "brand": {
+          "name": "Marke",
+          "settings": {
+            "name": "Markenname",
+            "flag": "Länderflagge (Emoji)"
+          }
+        }
+      }
+    },
+    "cta": {
+      "name": "Call-to-Action",
+      "settings": {
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift",
+        "description": "Beschreibung",
+        "button_label": "Button-Text",
+        "button_link": "Button-Link",
+        "button_secondary_label": "Zweiter Button-Text",
+        "button_secondary_link": "Zweiter Button-Link"
+      }
+    },
+    "contact": {
+      "name": "Kontakt",
+      "schema": {
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift",
+        "description": "Beschreibung",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "address": "Adresse"
+      }
+    },
+    "europe": {
+      "name": "Europa-Distribution",
+      "settings": {
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift",
+        "description": "Beschreibung",
+        "cta_label": "Button-Text",
+        "cta_link": "Button-Link"
+      },
+      "blocks": {
+        "country": {
+          "name": "Land",
+          "settings": {
+            "flag": "Flagge (Emoji)",
+            "name": "Ländername"
+          }
+        }
+      }
+    },
+    "product_categories": {
+      "name": "Produktkategorien",
+      "settings": {
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift"
+      },
+      "blocks": {
+        "category": {
+          "name": "Kategorie",
+          "settings": {
+            "image": "Bild",
+            "eyebrow": "Eyebrow-Text",
+            "title": "Titel",
+            "description": "Beschreibung",
+            "brands": "Marken (kommagetrennt)",
+            "link": "Link"
+          }
+        }
+      }
+    },
+    "services": {
+      "name": "Leistungen",
+      "settings": {
+        "eyebrow": "Eyebrow-Text",
+        "heading": "Überschrift"
+      },
+      "blocks": {
+        "service": {
+          "name": "Leistung",
+          "settings": {
+            "icon": "Symbol",
+            "title": "Titel",
+            "description": "Beschreibung"
+          }
+        }
+      }
+    },
+    "product": {
+      "name": "Produkt",
+      "schema": {
+        "vpe_text": "Verpackungseinheit (VPE)",
+        "vpe_info": "z. B. 12 Stück pro Karton",
+        "moq_text": "Mindestbestellmenge (MOQ)",
+        "moq_info": "z. B. Ab 1 Karton bestellbar",
+        "inquiry_email": "E-Mail für Anfragen"
+      }
+    },
+    "featured_collections": {
+      "name": "Ausgewählte Kollektionen",
+      "settings": {
+        "heading": "Überschrift"
+      },
+      "blocks": {
+        "collection": {
+          "name": "Kollektion",
+          "settings": {
+            "collection": "Kollektion",
+            "custom_title": "Eigener Titel"
+          }
+        }
+      }
+    }
+  }
+}

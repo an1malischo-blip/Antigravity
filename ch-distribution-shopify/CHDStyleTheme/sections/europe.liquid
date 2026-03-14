@@ -1,0 +1,271 @@
+<div class="europe full-width">
+  <div class="europe__inner">
+    <div class="europe__header">
+      {% if section.settings.eyebrow != blank %}
+        <span class="europe__eyebrow">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="europe__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <p class="europe__description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="europe__countries">
+        {% for block in section.blocks %}
+          <div class="europe__country" {{ block.shopify_attributes }}>
+            {% if block.settings.flag != blank %}
+              <span class="europe__flag">{{ block.settings.flag }}</span>
+            {% endif %}
+            {% if block.settings.name != blank %}
+              <span class="europe__country-name">{{ block.settings.name }}</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.cta_label != blank %}
+      <div class="europe__cta">
+        <a href="{{ section.settings.cta_link }}" class="europe__button">
+          {{ section.settings.cta_label }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .europe {
+    background-color: #0a1628;
+    color: #fff;
+    padding: 4rem var(--page-margin);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .europe::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(3, 75, 174, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .europe__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .europe__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .europe__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .europe__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .europe__description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.6;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .europe__countries {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    max-width: 52rem;
+    margin: 0 auto;
+  }
+
+  .europe__country {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.25rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--style-border-radius-cards);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .europe__country:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(3, 75, 174, 0.4);
+  }
+
+  .europe__flag {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .europe__country-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    opacity: 0.85;
+  }
+
+  .europe__cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .europe__button {
+    display: inline-block;
+    padding: 0.9rem 2.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--style-border-radius-buttons);
+    transition: all 0.25s ease;
+  }
+
+  .europe__button:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 640px) {
+    .europe__countries {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .europe {
+      padding: 6rem var(--page-margin);
+    }
+
+    .europe::before {
+      width: 700px;
+      height: 700px;
+    }
+
+    .europe__heading {
+      font-size: 2.75rem;
+    }
+
+    .europe__countries {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .europe__heading {
+      font-size: 3.25rem;
+    }
+
+    .europe__countries {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.europe.name",
+  "blocks": [
+    {
+      "type": "country",
+      "name": "t:sections.europe.blocks.country.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "flag",
+          "label": "t:sections.europe.blocks.country.settings.flag"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "t:sections.europe.blocks.country.settings.name",
+          "default": "Country"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:sections.europe.settings.eyebrow",
+      "default": "Distribution network"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.europe.settings.heading",
+      "default": "Delivering across Europe"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:sections.europe.settings.description",
+      "default": "From our warehouse in Bremen, Germany, we supply retailers and businesses across the European market with fast, reliable shipping."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "t:sections.europe.settings.cta_label",
+      "default": "Become a partner"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "t:sections.europe.settings.cta_link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.europe.name",
+      "blocks": [
+        { "type": "country", "settings": { "flag": "\ud83c\udde9\ud83c\uddea", "name": "Germany" } },
+        { "type": "country", "settings": { "flag": "\ud83c\udde6\ud83c\uddf9", "name": "Austria" } },
+        { "type": "country", "settings": { "flag": "\ud83c\udde8\ud83c\udded", "name": "Switzerland" } },
+        { "type": "country", "settings": { "flag": "\ud83c\uddf3\ud83c\uddf1", "name": "Netherlands" } },
+        { "type": "country", "settings": { "flag": "\ud83c\udde7\ud83c\uddea", "name": "Belgium" } },
+        { "type": "country", "settings": { "flag": "\ud83c\uddeb\ud83c\uddf7", "name": "France" } },
+        { "type": "country", "settings": { "flag": "\ud83c\uddee\ud83c\uddf9", "name": "Italy" } },
+        { "type": "country", "settings": { "flag": "\ud83c\uddea\ud83c\uddf8", "name": "Spain" } },
+        { "type": "country", "settings": { "flag": "\ud83c\uddf5\ud83c\uddf1", "name": "Poland" } },
+        { "type": "country", "settings": { "flag": "\ud83c\udde8\ud83c\uddff", "name": "Czech Republic" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

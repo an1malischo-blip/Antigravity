@@ -1,0 +1,252 @@
+{
+  "general": {
+    "404": "Non trouvé",
+    "article": "Article",
+    "block": "Bloc",
+    "blog": "Blog",
+    "cart": "Panier",
+    "collection": "Collection",
+    "collections": "Collections",
+    "collection_card": "Carte de collection",
+    "collections_grid": "Grille de collections",
+    "colors": "Couleurs",
+    "column": "Colonne",
+    "content": "Contenu",
+    "custom_section": "Section personnalisée",
+    "fonts": "Polices",
+    "footer": "Pied de page",
+    "group": "Groupe",
+    "header": "En-tête",
+    "layout": "Mise en page",
+    "main": "Principal",
+    "page": "Page",
+    "password": "Mot de passe",
+    "primary": "Primaire",
+    "product": "Produit",
+    "row": "Ligne",
+    "search": "Recherche",
+    "secondary": "Secondaire",
+    "section": "Section",
+    "settings": "Paramètres",
+    "sidebar": "Barre latérale",
+    "text": "Texte",
+    "theme": "Thème",
+    "typography": "Typographie"
+  },
+  "labels": {
+    "alignment": "Alignement",
+    "background": "Arrière-plan",
+    "foreground": "Premier plan",
+    "grid_gap": "Espacement de grille",
+    "grid_item_width": "Largeur de l'élément",
+    "input_corner_radius": "Rayon des coins",
+    "layout_direction": "Direction de la mise en page",
+    "menu": "Menu",
+    "customer_account_menu": "Menu du compte client",
+    "padding": "Marge intérieure",
+    "page_margin": "Marge de page",
+    "page_width": "Largeur de page",
+    "show_payment_icons": "Afficher les icônes de paiement",
+    "text_style": "Style de texte",
+    "text": "Texte"
+  },
+  "options": {
+    "alignment": {
+      "left": "Gauche",
+      "center": "Centre",
+      "right": "Droite"
+    },
+    "direction": {
+      "horizontal": "Horizontal",
+      "vertical": "Vertical"
+    },
+    "page_width": {
+      "narrow": "Étroit",
+      "wide": "Large"
+    },
+    "size": {
+      "large": "Grand",
+      "small": "Petit"
+    },
+    "text_style": {
+      "title": "Titre",
+      "subtitle": "Sous-titre",
+      "normal": "Texte normal"
+    }
+  },
+  "sections": {
+    "hero": {
+      "name": "Bannière héro",
+      "settings": {
+        "background_image": "Image d'arrière-plan",
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre",
+        "subheading": "Sous-titre",
+        "button_label": "Texte du bouton",
+        "button_link": "Lien du bouton",
+        "button_secondary_label": "Texte du second bouton",
+        "button_secondary_link": "Lien du second bouton"
+      }
+    },
+    "usp_bar": {
+      "name": "Barre USP",
+      "blocks": {
+        "item": {
+          "name": "Avantage",
+          "settings": {
+            "icon": "Icône",
+            "title": "Titre",
+            "description": "Description"
+          }
+        }
+      }
+    },
+    "footer": {
+      "schema": {
+        "logo": "Logo",
+        "description": "Description",
+        "menu": "Menu de navigation",
+        "menu_2": "Menu légal",
+        "email": "Adresse e-mail",
+        "phone": "Numéro de téléphone",
+        "address": "Adresse"
+      }
+    },
+    "about": {
+      "name": "À propos",
+      "settings": {
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre",
+        "description": "Description"
+      },
+      "blocks": {
+        "stat": {
+          "name": "Chiffre clé",
+          "settings": {
+            "value": "Valeur",
+            "label": "Libellé"
+          }
+        }
+      }
+    },
+    "brand_marquee": {
+      "name": "Défilement de marques",
+      "settings": {
+        "heading": "Titre"
+      },
+      "blocks": {
+        "brand": {
+          "name": "Marque",
+          "settings": {
+            "name": "Nom de la marque",
+            "flag": "Drapeau du pays (emoji)"
+          }
+        }
+      }
+    },
+    "cta": {
+      "name": "Appel à l'action",
+      "settings": {
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre",
+        "description": "Description",
+        "button_label": "Texte du bouton",
+        "button_link": "Lien du bouton",
+        "button_secondary_label": "Texte du second bouton",
+        "button_secondary_link": "Lien du second bouton"
+      }
+    },
+    "contact": {
+      "name": "Contact",
+      "schema": {
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre",
+        "description": "Description",
+        "email": "Adresse e-mail",
+        "phone": "Numéro de téléphone",
+        "address": "Adresse"
+      }
+    },
+    "europe": {
+      "name": "Distribution Europe",
+      "settings": {
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre",
+        "description": "Description",
+        "cta_label": "Texte du bouton",
+        "cta_link": "Lien du bouton"
+      },
+      "blocks": {
+        "country": {
+          "name": "Pays",
+          "settings": {
+            "flag": "Drapeau (emoji)",
+            "name": "Nom du pays"
+          }
+        }
+      }
+    },
+    "product_categories": {
+      "name": "Catégories de produits",
+      "settings": {
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre"
+      },
+      "blocks": {
+        "category": {
+          "name": "Catégorie",
+          "settings": {
+            "image": "Image",
+            "eyebrow": "Texte d'accroche",
+            "title": "Titre",
+            "description": "Description",
+            "brands": "Marques (séparées par des virgules)",
+            "link": "Lien"
+          }
+        }
+      }
+    },
+    "services": {
+      "name": "Services",
+      "settings": {
+        "eyebrow": "Texte d'accroche",
+        "heading": "Titre"
+      },
+      "blocks": {
+        "service": {
+          "name": "Service",
+          "settings": {
+            "icon": "Icône",
+            "title": "Titre",
+            "description": "Description"
+          }
+        }
+      }
+    },
+    "product": {
+      "name": "Produit",
+      "schema": {
+        "vpe_text": "Unité de conditionnement",
+        "vpe_info": "ex. « 12 pièces par carton »",
+        "moq_text": "Quantité minimum de commande",
+        "moq_info": "ex. « À partir de 1 carton »",
+        "inquiry_email": "E-mail pour les demandes"
+      }
+    },
+    "featured_collections": {
+      "name": "Collections en vedette",
+      "settings": {
+        "heading": "Titre"
+      },
+      "blocks": {
+        "collection": {
+          "name": "Collection",
+          "settings": {
+            "collection": "Collection",
+            "custom_title": "Titre personnalisé"
+          }
+        }
+      }
+    }
+  }
+}

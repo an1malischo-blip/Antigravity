@@ -1,0 +1,199 @@
+<div class="about full-width">
+  <div class="about__inner">
+    <div class="about__text">
+      {% if section.settings.eyebrow != blank %}
+        <span class="about__eyebrow">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="about__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <p class="about__description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="about__cards">
+      {% for block in section.blocks %}
+        <div class="about__card" {{ block.shopify_attributes }}>
+          {% if block.settings.value != blank %}
+            <span class="about__card-value">{{ block.settings.value }}</span>
+          {% endif %}
+          {% if block.settings.label != blank %}
+            <span class="about__card-label">{{ block.settings.label }}</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .about {
+    background-color: var(--color-background-secondary);
+    padding: 4rem var(--page-margin);
+  }
+
+  .about__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .about__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-foreground);
+    margin-bottom: 1.25rem;
+  }
+
+  .about__description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-foreground);
+    opacity: 0.7;
+    max-width: 42ch;
+  }
+
+  .about__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .about__card {
+    background-color: var(--color-background);
+    border-radius: var(--style-border-radius-cards);
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .about__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .about__card-value {
+    display: block;
+    font-family: var(--font-heading--family);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .about__card-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-foreground);
+    opacity: 0.6;
+  }
+
+  @media (min-width: 768px) {
+    .about {
+      padding: 6rem var(--page-margin);
+    }
+
+    .about__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .about__heading {
+      font-size: 2.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about__heading {
+      font-size: 3.25rem;
+    }
+
+    .about__card {
+      padding: 2rem;
+    }
+
+    .about__card-value {
+      font-size: 2.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.about.name",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "t:sections.about.blocks.stat.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "t:sections.about.blocks.stat.settings.value",
+          "default": "100+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:sections.about.blocks.stat.settings.label",
+          "default": "Products"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:sections.about.settings.eyebrow",
+      "default": "About us"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.about.settings.heading",
+      "default": "Your partner for premium distribution"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:sections.about.settings.description",
+      "default": "CH Distribution is a German-based B2B wholesaler specializing in international brand snacks, sweets, and vapes. We deliver reliably across Europe with personal service and competitive pricing."
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.about.name",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "500+", "label": "Products" } },
+        { "type": "stat", "settings": { "value": "20+", "label": "Countries" } },
+        { "type": "stat", "settings": { "value": "48h", "label": "Delivery" } },
+        { "type": "stat", "settings": { "value": "100%", "label": "B2B focus" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

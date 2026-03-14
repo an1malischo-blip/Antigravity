@@ -1,0 +1,23 @@
+/*
+ * ------------------------------------------------------------
+ *  IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "type_primary_font": "dm_sans_n4",
+    "type_heading_font": "playfair_display_n4",
+    "max_page_width": "110rem",
+    "min_page_margin": 24,
+    "background_color": "#FFFFFF",
+    "secondary_background_color": "#F4F6FA",
+    "foreground_color": "#111111",
+    "accent_color": "#034bae",
+    "accent_color_text": "#FFFFFF",
+    "input_corner_radius": 4
+  }
+}

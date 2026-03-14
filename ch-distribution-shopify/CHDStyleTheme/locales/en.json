@@ -1,0 +1,109 @@
+{
+  "404": {
+    "title": "404",
+    "not_found": "Page not found.",
+    "back_to_shopping": "Back to shopping"
+  },
+  "blog": {
+    "article_comments": "Comments",
+    "article_metadata_html": "{{ date }} by {{ author }}",
+    "comment_form_body": "Comment",
+    "comment_form_email": "Email",
+    "comment_form_name": "Name",
+    "comment_form_submit": "Post",
+    "comment_form_title": "Add a comment"
+  },
+  "cart": {
+    "title": "Cart",
+    "product": "Product",
+    "price": "Price",
+    "quantity_label": "Quantity",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "tax_note": "Shipping and taxes calculated at checkout.",
+    "note": "Order note",
+    "note_placeholder": "Special instructions for your order...",
+    "update": "Update",
+    "remove": "Remove",
+    "checkout": "Checkout",
+    "empty": "Your cart is empty.",
+    "continue_shopping": "Continue shopping"
+  },
+  "customers": {
+    "login": {
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "title": "Login"
+    }
+  },
+  "collections": {
+    "title": "Collections",
+    "product_count": "products",
+    "empty": "No products in this category."
+  },
+  "gift_card": {
+    "add_to_apple_wallet": "Add to Apple Wallet",
+    "card": "Gift card",
+    "expired": "This gift card has expired",
+    "expires_on": "Expires on {{ expires_on }}",
+    "use_at_checkout": "Use this gift card at checkout"
+  },
+  "password": {
+    "title": "This shop is private",
+    "password": "Password",
+    "enter": "Enter"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search articles, pages, or products",
+    "submit": "Search",
+    "no_results_html": "No results found for {{ terms }}",
+    "results_for_html": "{{ count }} results found for {{ terms }}"
+  },
+  "products": {
+    "product": {
+      "no_image": "No image available",
+      "image_number": "Image {{ number }}",
+      "sku": "SKU",
+      "vendor": "Manufacturer",
+      "type": "Product type",
+      "barcode": "EAN / Barcode",
+      "in_stock": "In stock",
+      "sold_out": "Sold out",
+      "sale": "Sale",
+      "tax_note": "excl. VAT",
+      "quantity": "Quantity",
+      "decrease_quantity": "Decrease quantity",
+      "increase_quantity": "Increase quantity",
+      "add_to_cart": "Add to cart",
+      "send_inquiry": "Send inquiry",
+      "inquiry_subject": "Inquiry about",
+      "description": "Product description",
+      "trust_eu": "EU compliant",
+      "trust_shipping": "Fast shipping",
+      "trust_b2b": "B2B prices"
+    }
+  },
+  "sections": {
+    "featured_collections": {
+      "products": "products"
+    },
+    "footer": {
+      "navigation": "Navigation",
+      "legal": "Legal",
+      "contact": "Contact"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "form_name": "Name",
+      "form_email": "Email",
+      "form_company": "Company",
+      "form_message": "Message",
+      "form_submit": "Send message",
+      "success": "Thank you for your message. We will get back to you shortly."
+    }
+  }
+}

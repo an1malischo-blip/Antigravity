@@ -1,0 +1,271 @@
+<footer class="footer full-width">
+  <div class="footer__main">
+    <div class="footer__brand">
+      {% if section.settings.logo %}
+        <div class="footer__logo">
+          {{ section.settings.logo | image_url: width: 600 | image_tag }}
+        </div>
+      {% else %}
+        <div class="footer__logo">
+          <img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}">
+        </div>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <p class="footer__description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="footer__columns">
+      {% if section.settings.menu.links.size > 0 %}
+        <div class="footer__column">
+          <h4 class="footer__column-title">{{ 'sections.footer.navigation' | t }}</h4>
+          <ul class="footer__menu">
+            {% for link in section.settings.menu.links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if section.settings.menu_2.links.size > 0 %}
+        <div class="footer__column">
+          <h4 class="footer__column-title">{{ 'sections.footer.legal' | t }}</h4>
+          <ul class="footer__menu">
+            {% for link in section.settings.menu_2.links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <div class="footer__column">
+        <h4 class="footer__column-title">{{ 'sections.footer.contact' | t }}</h4>
+        <ul class="footer__contact">
+          {% if section.settings.email != blank %}
+            <li>
+              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </li>
+          {% endif %}
+          {% if section.settings.phone != blank %}
+            <li>
+              <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
+            </li>
+          {% endif %}
+          {% if section.settings.address != blank %}
+            <li>{{ section.settings.address }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__copyright">
+      &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+    </div>
+
+    {% if section.settings.show_payment_icons %}
+      <div class="footer__payment">
+        {% for type in shop.enabled_payment_types %}
+          {{ type | payment_type_svg_tag }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% stylesheet %}
+  .footer {
+    background-color: var(--color-background-secondary);
+    color: var(--color-foreground);
+    padding: 4rem var(--page-margin) 0;
+  }
+
+  .footer__main {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .footer__brand {
+    max-width: 24rem;
+  }
+
+  .footer__logo {
+    margin-bottom: 1rem;
+  }
+
+  .footer__logo img {
+    width: 14rem;
+    height: auto;
+    max-height: 4rem;
+    object-fit: contain;
+  }
+
+  .footer__shop-name {
+    display: block;
+    font-family: var(--font-heading--family);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .footer__description {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    opacity: 0.5;
+  }
+
+  .footer__columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer__column-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .footer__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer__menu a,
+  .footer__contact a {
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .footer__menu a:hover,
+  .footer__contact a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .footer__contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .footer__bottom {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer__copyright {
+    font-size: 0.75rem;
+    opacity: 0.4;
+  }
+
+  .footer__payment {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .footer__payment svg {
+    width: 2.25rem;
+    height: auto;
+    opacity: 0.5;
+  }
+
+  @media (min-width: 768px) {
+    .footer__main {
+      grid-template-columns: 1.2fr 2fr;
+      gap: 4rem;
+    }
+
+    .footer__logo img {
+      width: 18rem;
+      max-height: 5rem;
+    }
+
+    .footer__columns {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.footer.schema.logo"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:sections.footer.schema.description",
+      "default": "Your reliable B2B partner for premium product distribution across Europe."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.footer.schema.menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "t:sections.footer.schema.menu_2"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "t:sections.footer.schema.email",
+      "default": "info@chdistribution.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "t:sections.footer.schema.phone",
+      "default": "+49 160 4430444"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "t:sections.footer.schema.address",
+      "default": "Langwedeler Straße 82, 28307 Bremen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:labels.show_payment_icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

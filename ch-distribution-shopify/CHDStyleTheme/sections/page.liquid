@@ -1,0 +1,105 @@
+{% comment %}
+  CH Distribution — Inhaltsseite (z.B. AGB, Impressum, Über uns)
+{% endcomment %}
+
+<div class="content-page">
+  <h1 class="content-page__title">{{ page.title }}</h1>
+  <div class="content-page__body rte">
+    {{ page.content }}
+  </div>
+</div>
+
+{% stylesheet %}
+.content-page {
+  padding: 2rem 0;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.content-page__title {
+  font-family: var(--font-heading--family);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .content-page__title {
+    font-size: 2.2rem;
+  }
+}
+
+.content-page__body.rte h2 {
+  font-family: var(--font-heading--family);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 2rem 0 0.75rem;
+}
+
+.content-page__body.rte h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.content-page__body.rte p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.content-page__body.rte ul,
+.content-page__body.rte ol {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #374151;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.content-page__body.rte li {
+  margin-bottom: 0.35rem;
+}
+
+.content-page__body.rte a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.content-page__body.rte a:hover {
+  opacity: 0.8;
+}
+
+.content-page__body.rte table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.content-page__body.rte th,
+.content-page__body.rte td {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.content-page__body.rte th {
+  background: var(--color-background-secondary);
+  font-weight: 700;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.page",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

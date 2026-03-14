@@ -1,0 +1,199 @@
+<div class="cta full-width">
+  <div class="cta__inner">
+    {% if section.settings.eyebrow != blank %}
+      <span class="cta__eyebrow">{{ section.settings.eyebrow }}</span>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="cta__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="cta__description">{{ section.settings.description }}</p>
+    {% endif %}
+
+    <div class="cta__actions">
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="cta__button cta__button--primary">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.button_secondary_label != blank %}
+        <a href="{{ section.settings.button_secondary_link }}" class="cta__button cta__button--secondary">
+          {{ section.settings.button_secondary_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .cta {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    padding: 4rem var(--page-margin);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta__inner {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+
+  .cta__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .cta__description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .cta__button {
+    display: inline-block;
+    padding: 0.9rem 2.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--style-border-radius-buttons);
+    transition: all 0.25s ease;
+  }
+
+  .cta__button--primary {
+    background-color: #fff;
+    color: var(--color-accent);
+    border: 2px solid #fff;
+  }
+
+  .cta__button--primary:hover {
+    background-color: transparent;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .cta__button--secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .cta__button--secondary:hover {
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 768px) {
+    .cta {
+      padding: 6rem var(--page-margin);
+    }
+
+    .cta__heading {
+      font-size: 2.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cta__heading {
+      font-size: 3.25rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.cta.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:sections.cta.settings.eyebrow",
+      "default": "Ready to start?"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.cta.settings.heading",
+      "default": "Start your partnership today"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:sections.cta.settings.description",
+      "default": "Join hundreds of retailers across Europe who trust CH Distribution for premium product supply."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.cta.settings.button_label",
+      "default": "Register now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.cta.settings.button_link"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_label",
+      "label": "t:sections.cta.settings.button_secondary_label",
+      "default": "View products"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "t:sections.cta.settings.button_secondary_link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.cta.name"
+    }
+  ]
+}
+{% endschema %}

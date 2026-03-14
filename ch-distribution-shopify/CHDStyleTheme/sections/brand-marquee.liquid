@@ -1,0 +1,181 @@
+<div class="brand-marquee full-width">
+  {% if section.settings.heading != blank %}
+    <p class="brand-marquee__heading">{{ section.settings.heading }}</p>
+  {% endif %}
+
+  <div class="brand-marquee__track" aria-label="{{ section.settings.heading }}">
+    <div class="brand-marquee__scroll">
+      {% for block in section.blocks %}
+        <span class="brand-marquee__item" {{ block.shopify_attributes }}>
+          {% if block.settings.flag != blank %}
+            <span class="brand-marquee__flag">{{ block.settings.flag }}</span>
+          {% endif %}
+          {{ block.settings.name }}
+        </span>
+        <span class="brand-marquee__dot" aria-hidden="true"></span>
+      {% endfor %}
+
+      {% comment %} Duplicate for seamless loop {% endcomment %}
+      {% for block in section.blocks %}
+        <span class="brand-marquee__item" aria-hidden="true">
+          {% if block.settings.flag != blank %}
+            <span class="brand-marquee__flag">{{ block.settings.flag }}</span>
+          {% endif %}
+          {{ block.settings.name }}
+        </span>
+        <span class="brand-marquee__dot" aria-hidden="true"></span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .brand-marquee {
+    background-color: var(--color-foreground);
+    color: #fff;
+    padding: 1.5rem 0;
+    overflow: hidden;
+  }
+
+  .brand-marquee__heading {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.4;
+    margin-bottom: 1rem;
+  }
+
+  .brand-marquee__track {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+
+  .brand-marquee__scroll {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+  }
+
+  .brand-marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading--family);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    opacity: 0.8;
+    padding: 0 0.25rem;
+  }
+
+  .brand-marquee__flag {
+    font-size: 1rem;
+  }
+
+  .brand-marquee__dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    margin: 0 1.25rem;
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .brand-marquee {
+      padding: 2rem 0;
+    }
+
+    .brand-marquee__item {
+      font-size: 1.35rem;
+    }
+
+    .brand-marquee__dot {
+      margin: 0 1.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-marquee__scroll {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.brand_marquee.name",
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "t:sections.brand_marquee.blocks.brand.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "t:sections.brand_marquee.blocks.brand.settings.name",
+          "default": "Brand name"
+        },
+        {
+          "type": "text",
+          "id": "flag",
+          "label": "t:sections.brand_marquee.blocks.brand.settings.flag"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.brand_marquee.settings.heading",
+      "default": "Trusted brands we distribute"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.brand_marquee.name",
+      "blocks": [
+        { "type": "brand", "settings": { "name": "Fanta", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        { "type": "brand", "settings": { "name": "Takis", "flag": "\ud83c\uddf2\ud83c\uddfd" } },
+        { "type": "brand", "settings": { "name": "Reese's", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        { "type": "brand", "settings": { "name": "Prime", "flag": "\ud83c\uddec\ud83c\udde7" } },
+        { "type": "brand", "settings": { "name": "Nerds", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        { "type": "brand", "settings": { "name": "Jolly Rancher", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        { "type": "brand", "settings": { "name": "ELF BAR", "flag": "\ud83c\udde8\ud83c\uddf3" } },
+        { "type": "brand", "settings": { "name": "Warheads", "flag": "\ud83c\uddfa\ud83c\uddf8" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

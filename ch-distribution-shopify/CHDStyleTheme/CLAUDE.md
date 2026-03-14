@@ -1,0 +1,1 @@
+/Users/c.holldack/Desktop/Antigravity/ch-distribution-shopify/CHDStyleTheme/AGENTS.md

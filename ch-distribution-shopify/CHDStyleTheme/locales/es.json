@@ -1,0 +1,109 @@
+{
+  "404": {
+    "title": "404",
+    "not_found": "Página no encontrada.",
+    "back_to_shopping": "Volver a la tienda"
+  },
+  "blog": {
+    "article_comments": "Comentarios",
+    "article_metadata_html": "{{ date }} por {{ author }}",
+    "comment_form_body": "Comentario",
+    "comment_form_email": "Correo electrónico",
+    "comment_form_name": "Nombre",
+    "comment_form_submit": "Publicar",
+    "comment_form_title": "Añadir un comentario"
+  },
+  "cart": {
+    "title": "Carrito",
+    "product": "Producto",
+    "price": "Precio",
+    "quantity_label": "Cantidad",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "tax_note": "Envío e impuestos calculados en el pago.",
+    "note": "Nota del pedido",
+    "note_placeholder": "Instrucciones especiales para su pedido...",
+    "update": "Actualizar",
+    "remove": "Eliminar",
+    "checkout": "Ir al pago",
+    "empty": "Su carrito está vacío.",
+    "continue_shopping": "Seguir comprando"
+  },
+  "customers": {
+    "login": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "title": "Iniciar sesión"
+    }
+  },
+  "collections": {
+    "title": "Colecciones",
+    "product_count": "productos",
+    "empty": "No hay productos en esta categoría."
+  },
+  "gift_card": {
+    "add_to_apple_wallet": "Añadir a Apple Wallet",
+    "card": "Tarjeta regalo",
+    "expired": "Esta tarjeta regalo ha caducado",
+    "expires_on": "Caduca el {{ expires_on }}",
+    "use_at_checkout": "Usar esta tarjeta regalo en el pago"
+  },
+  "password": {
+    "title": "Esta tienda es privada",
+    "password": "Contraseña",
+    "enter": "Entrar"
+  },
+  "search": {
+    "title": "Búsqueda",
+    "placeholder": "Buscar artículos, páginas o productos",
+    "submit": "Buscar",
+    "no_results_html": "No se encontraron resultados para {{ terms }}",
+    "results_for_html": "{{ count }} resultados para {{ terms }}"
+  },
+  "products": {
+    "product": {
+      "no_image": "Sin imagen disponible",
+      "image_number": "Imagen {{ number }}",
+      "sku": "Ref.",
+      "vendor": "Fabricante",
+      "type": "Tipo de producto",
+      "barcode": "EAN / Código de barras",
+      "in_stock": "En stock",
+      "sold_out": "Agotado",
+      "sale": "Oferta",
+      "tax_note": "sin IVA",
+      "quantity": "Cantidad",
+      "decrease_quantity": "Disminuir cantidad",
+      "increase_quantity": "Aumentar cantidad",
+      "add_to_cart": "Añadir al carrito",
+      "send_inquiry": "Enviar consulta",
+      "inquiry_subject": "Consulta sobre",
+      "description": "Descripción del producto",
+      "trust_eu": "Conforme UE",
+      "trust_shipping": "Envío rápido",
+      "trust_b2b": "Precios B2B"
+    }
+  },
+  "sections": {
+    "featured_collections": {
+      "products": "productos"
+    },
+    "footer": {
+      "navigation": "Navegación",
+      "legal": "Legal",
+      "contact": "Contacto"
+    },
+    "contact": {
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "form_name": "Nombre",
+      "form_email": "Correo electrónico",
+      "form_company": "Empresa",
+      "form_message": "Mensaje",
+      "form_submit": "Enviar mensaje",
+      "success": "Gracias por su mensaje. Nos pondremos en contacto con usted en breve."
+    }
+  }
+}

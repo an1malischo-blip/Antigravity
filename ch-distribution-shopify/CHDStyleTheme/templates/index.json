@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ *  IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "B2B Distribution",
+        "heading": "Premium-Produkte für den europäischen Markt",
+        "subheading": "CH Distribution ist Ihr zuverlässiger Partner für den Großhandel internationaler Marken-Snacks, Süßwaren und Vapes in ganz Europa.",
+        "button_label": "Produkte ansehen",
+        "button_secondary_label": "Kontakt aufnehmen"
+      }
+    },
+    "brand_marquee": {
+      "type": "brand-marquee",
+      "settings": {
+        "heading": "Marken, die wir vertreiben"
+      },
+      "blocks": {
+        "brand_1": { "type": "brand", "settings": { "name": "Fanta", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        "brand_2": { "type": "brand", "settings": { "name": "Takis", "flag": "\ud83c\uddf2\ud83c\uddfd" } },
+        "brand_3": { "type": "brand", "settings": { "name": "Reese's", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        "brand_4": { "type": "brand", "settings": { "name": "Prime", "flag": "\ud83c\uddec\ud83c\udde7" } },
+        "brand_5": { "type": "brand", "settings": { "name": "Nerds", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        "brand_6": { "type": "brand", "settings": { "name": "Jolly Rancher", "flag": "\ud83c\uddfa\ud83c\uddf8" } },
+        "brand_7": { "type": "brand", "settings": { "name": "ELF BAR", "flag": "\ud83c\udde8\ud83c\uddf3" } },
+        "brand_8": { "type": "brand", "settings": { "name": "Warheads", "flag": "\ud83c\uddfa\ud83c\uddf8" } }
+      },
+      "block_order": ["brand_1", "brand_2", "brand_3", "brand_4", "brand_5", "brand_6", "brand_7", "brand_8"]
+    },
+    "about": {
+      "type": "about",
+      "settings": {
+        "eyebrow": "Über uns",
+        "heading": "Ihr Partner für Premium-Distribution",
+        "description": "CH Distribution ist ein in Deutschland ansässiger B2B-Großhändler, spezialisiert auf internationale Marken-Snacks, Süßwaren und Vapes. Wir liefern zuverlässig in ganz Europa mit persönlichem Service und wettbewerbsfähigen Preisen."
+      },
+      "blocks": {
+        "stat_1": { "type": "stat", "settings": { "value": "500+", "label": "Produkte" } },
+        "stat_2": { "type": "stat", "settings": { "value": "20+", "label": "Länder" } },
+        "stat_3": { "type": "stat", "settings": { "value": "48h", "label": "Lieferung" } },
+        "stat_4": { "type": "stat", "settings": { "value": "100%", "label": "B2B-Fokus" } }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"]
+    },
+    "product_categories": {
+      "type": "product-categories",
+      "settings": {
+        "eyebrow": "Unser Sortiment",
+        "heading": "Was wir vertreiben"
+      },
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "eyebrow": "Food & Drinks",
+            "title": "Snacks & Süßwaren",
+            "description": "Internationale Marken-Snacks, Süßigkeiten und Getränke aus den USA, Mexiko, UK und Asien.",
+            "brands": "Takis, Reese's, Nerds, Jolly Rancher, Fanta, Prime, Warheads"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "eyebrow": "Vaping",
+            "title": "Vapes & Zubehör",
+            "description": "Führende Vape-Marken mit vollständiger EU-Konformität, lückenloser Dokumentation und TPD-Zertifizierung.",
+            "brands": "ELF BAR, Lost Mary, SKE Crystal, Geek Bar"
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2"]
+    },
+    "services": {
+      "type": "services",
+      "settings": {
+        "eyebrow": "Unsere Leistungen",
+        "heading": "Was wir bieten"
+      },
+      "blocks": {
+        "service_1": { "type": "service", "settings": { "title": "B2B-Großhandel", "description": "Wettbewerbsfähige Großhandelspreise für Einzelhändler, Kioske und Online-Shops in ganz Europa." } },
+        "service_2": { "type": "service", "settings": { "title": "Schneller Versand", "description": "Zuverlässige Lieferung innerhalb von 48 Stunden in Deutschland und europaweit innerhalb von 5 Werktagen." } },
+        "service_3": { "type": "service", "settings": { "title": "Markenportfolio", "description": "Kuratierte Auswahl an trendigen internationalen Snacks, Süßwaren und Vape-Produkten." } },
+        "service_4": { "type": "service", "settings": { "title": "Persönliche Betreuung", "description": "Fester Ansprechpartner für individuelle Beratung und Sonderbestellungen." } },
+        "service_5": { "type": "service", "settings": { "title": "Flexible Bestellungen", "description": "Niedrige Mindestbestellmengen und Mischpaletten, auf Ihre Bedürfnisse zugeschnitten." } },
+        "service_6": { "type": "service", "settings": { "title": "Qualitätssicherung", "description": "Alle Produkte erfüllen EU-Standards mit vollständiger Rückverfolgbarkeit und Dokumentation." } }
+      },
+      "block_order": ["service_1", "service_2", "service_3", "service_4", "service_5", "service_6"]
+    },
+    "europe": {
+      "type": "europe",
+      "settings": {
+        "eyebrow": "Distributionsnetzwerk",
+        "heading": "Lieferung in ganz Europa",
+        "description": "Von unserem Lager in Bremen, Deutschland, beliefern wir Einzelhändler und Unternehmen im gesamten europäischen Markt mit schnellem, zuverlässigem Versand.",
+        "cta_label": "Partner werden"
+      },
+      "blocks": {
+        "country_1": { "type": "country", "settings": { "flag": "\ud83c\udde9\ud83c\uddea", "name": "Deutschland" } },
+        "country_2": { "type": "country", "settings": { "flag": "\ud83c\udde6\ud83c\uddf9", "name": "Österreich" } },
+        "country_3": { "type": "country", "settings": { "flag": "\ud83c\udde8\ud83c\udded", "name": "Schweiz" } },
+        "country_4": { "type": "country", "settings": { "flag": "\ud83c\uddf3\ud83c\uddf1", "name": "Niederlande" } },
+        "country_5": { "type": "country", "settings": { "flag": "\ud83c\udde7\ud83c\uddea", "name": "Belgien" } },
+        "country_6": { "type": "country", "settings": { "flag": "\ud83c\uddeb\ud83c\uddf7", "name": "Frankreich" } },
+        "country_7": { "type": "country", "settings": { "flag": "\ud83c\uddee\ud83c\uddf9", "name": "Italien" } },
+        "country_8": { "type": "country", "settings": { "flag": "\ud83c\uddea\ud83c\uddf8", "name": "Spanien" } },
+        "country_9": { "type": "country", "settings": { "flag": "\ud83c\uddf5\ud83c\uddf1", "name": "Polen" } },
+        "country_10": { "type": "country", "settings": { "flag": "\ud83c\udde8\ud83c\uddff", "name": "Tschechien" } }
+      },
+      "block_order": ["country_1", "country_2", "country_3", "country_4", "country_5", "country_6", "country_7", "country_8", "country_9", "country_10"]
+    },
+    "contact": {
+      "type": "contact",
+      "settings": {
+        "eyebrow": "Kontakt",
+        "heading": "Lassen Sie uns zusammenarbeiten",
+        "description": "Interesse an einer Partnerschaft? Kontaktieren Sie uns und wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+        "email": "info@chdistribution.com",
+        "phone": "+49 160 4430444",
+        "address": "Langwedeler Straße 82, 28307 Bremen"
+      }
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "eyebrow": "Bereit loszulegen?",
+        "heading": "Starten Sie Ihre Partnerschaft noch heute",
+        "description": "Schließen Sie sich hunderten Einzelhändlern in ganz Europa an, die CH Distribution für erstklassige Produktversorgung vertrauen.",
+        "button_label": "Jetzt registrieren",
+        "button_secondary_label": "Produkte ansehen"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "brand_marquee",
+    "about",
+    "services",
+    "product_categories",
+    "europe",
+    "contact",
+    "cta"
+  ]
+}
