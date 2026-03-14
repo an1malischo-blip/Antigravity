@@ -1,0 +1,54 @@
+{% comment %}
+  CH Distribution — Konto aktivieren
+{% endcomment %}
+
+<div class="customer-auth">
+  <div class="customer-auth__card">
+    <h1 class="customer-auth__title">{{ 'customers.activate.title' | t }}</h1>
+    <p class="customer-auth__text">{{ 'customers.activate.description' | t }}</p>
+
+    {%- form 'activate_customer_password' -%}
+      {%- if form.errors -%}
+        <div class="customer-auth__error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <div class="customer-auth__field">
+        <label for="activate-password">{{ 'customers.reset_password.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="activate-password"
+          autocomplete="new-password"
+          required
+        >
+      </div>
+
+      <div class="customer-auth__field">
+        <label for="activate-password-confirm">{{ 'customers.reset_password.password_confirm' | t }}</label>
+        <input
+          type="password"
+          name="customer[password_confirmation]"
+          id="activate-password-confirm"
+          autocomplete="new-password"
+          required
+        >
+      </div>
+
+      <button type="submit" class="customer-auth__submit">
+        {{ 'customers.activate.submit' | t }}
+      </button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:customers.activate.title",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

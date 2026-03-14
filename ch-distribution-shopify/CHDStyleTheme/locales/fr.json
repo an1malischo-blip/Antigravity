@@ -11,7 +11,14 @@
     "comment_form_email": "E-mail",
     "comment_form_name": "Nom",
     "comment_form_submit": "Publier",
-    "comment_form_title": "Ajouter un commentaire"
+    "comment_form_title": "Ajouter un commentaire",
+    "comment_success": "Votre commentaire a été soumis avec succès.",
+    "read_more": "Lire la suite",
+    "no_articles": "Aucun article pour le moment.",
+    "pagination": "Pages du blog",
+    "previous_page": "Page précédente",
+    "next_page": "Page suivante",
+    "back_to_blog": "Retour au blog"
   },
   "cart": {
     "title": "Panier",
@@ -34,7 +41,74 @@
       "email": "E-mail",
       "password": "Mot de passe",
       "submit": "Se connecter",
-      "title": "Connexion"
+      "title": "Connexion",
+      "forgot_password": "Mot de passe oublié ?",
+      "no_account": "Pas encore de compte ?",
+      "create_account": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "submit": "S'inscrire",
+      "has_account": "Déjà un compte ?"
+    },
+    "recover": {
+      "description": "Nous vous enverrons un e-mail pour réinitialiser votre mot de passe.",
+      "submit": "Envoyer",
+      "success": "Nous vous avons envoyé un e-mail avec un lien pour réinitialiser votre mot de passe.",
+      "back_to_login": "Retour à la connexion"
+    },
+    "reset_password": {
+      "title": "Réinitialiser le mot de passe",
+      "password": "Nouveau mot de passe",
+      "password_confirm": "Confirmer le mot de passe",
+      "submit": "Réinitialiser le mot de passe"
+    },
+    "activate": {
+      "title": "Activer le compte",
+      "description": "Créez un mot de passe pour activer votre compte.",
+      "submit": "Activer le compte"
+    },
+    "account": {
+      "title": "Mon compte",
+      "logout": "Se déconnecter",
+      "orders": "Commandes",
+      "no_orders": "Vous n'avez pas encore passé de commande.",
+      "addresses": "Adresses",
+      "manage_addresses": "Gérer les adresses"
+    },
+    "orders": {
+      "title": "Commandes",
+      "order_number": "Commande",
+      "order_number_title": "Commande {{ name }}",
+      "date": "Date",
+      "payment_status": "Paiement",
+      "fulfillment_status": "Livraison",
+      "total": "Total",
+      "shipping": "Livraison",
+      "tax": "Taxe",
+      "shipping_address": "Adresse de livraison",
+      "billing_address": "Adresse de facturation"
+    },
+    "addresses": {
+      "title": "Adresses",
+      "add_new": "Ajouter une adresse",
+      "default": "Par défaut",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "delete_confirm": "Êtes-vous sûr de vouloir supprimer cette adresse ?",
+      "save": "Enregistrer",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "company": "Entreprise",
+      "address1": "Adresse",
+      "address2": "Complément d'adresse",
+      "zip": "Code postal",
+      "city": "Ville",
+      "country": "Pays",
+      "phone": "Téléphone",
+      "set_default": "Définir comme adresse par défaut"
     }
   },
   "collections": {
@@ -45,9 +119,11 @@
   "gift_card": {
     "add_to_apple_wallet": "Ajouter à Apple Wallet",
     "card": "Carte cadeau",
+    "code": "Code de la carte cadeau",
     "expired": "Cette carte cadeau a expiré",
     "expires_on": "Expire le {{ expires_on }}",
-    "use_at_checkout": "Utiliser cette carte cadeau lors du paiement"
+    "use_at_checkout": "Utiliser cette carte cadeau lors du paiement",
+    "print": "Imprimer"
   },
   "password": {
     "title": "Cette boutique est privée",
@@ -88,7 +164,10 @@
   "general": {
     "skip_to_content": "Aller au contenu",
     "page": "Page",
-    "cart": "Panier"
+    "cart": "Panier",
+    "blog": "Blog",
+    "article": "Article",
+    "password": "Mot de passe"
   },
   "sections": {
     "featured_collections": {

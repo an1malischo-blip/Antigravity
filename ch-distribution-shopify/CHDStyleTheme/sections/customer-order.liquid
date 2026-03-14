@@ -1,0 +1,252 @@
+{% comment %}
+  CH Distribution — Einzelbestellung
+{% endcomment %}
+
+<div class="account-page">
+  <a href="{{ routes.account_url }}" class="order-back">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    {{ 'customers.account.title' | t }}
+  </a>
+
+  <h1 class="account-page__title">{{ 'customers.orders.order_number_title' | t: name: order.name }}</h1>
+
+  <div class="order-meta">
+    <span>{{ order.created_at | date: '%d.%m.%Y, %H:%M' }}</span>
+    <span class="order-meta__badge order-meta__badge--{{ order.financial_status }}">{{ order.financial_status_label }}</span>
+    <span class="order-meta__badge order-meta__badge--{{ order.fulfillment_status }}">{{ order.fulfillment_status_label }}</span>
+  </div>
+
+  <div class="order-details">
+    <div class="order-items">
+      {%- for line_item in order.line_items -%}
+        <div class="order-item">
+          <div class="order-item__image">
+            {%- if line_item.image -%}
+              {{ line_item.image | image_url: width: 100, height: 100, crop: 'center' | image_tag: loading: 'lazy' }}
+            {%- endif -%}
+          </div>
+          <div class="order-item__info">
+            <span class="order-item__title">{{ line_item.title }}</span>
+            {%- if line_item.variant.title != 'Default Title' -%}
+              <span class="order-item__variant">{{ line_item.variant.title }}</span>
+            {%- endif -%}
+            {%- if line_item.sku != blank -%}
+              <span class="order-item__sku">{{ 'products.product.sku' | t }}: {{ line_item.sku }}</span>
+            {%- endif -%}
+          </div>
+          <div class="order-item__qty">x{{ line_item.quantity }}</div>
+          <div class="order-item__price">{{ line_item.final_line_price | money }}</div>
+        </div>
+      {%- endfor -%}
+
+      <div class="order-totals">
+        <div class="order-totals__row">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ order.line_items_subtotal_price | money }}</span>
+        </div>
+
+        {%- for discount_application in order.discount_applications -%}
+          <div class="order-totals__row order-totals__row--discount">
+            <span>{{ discount_application.title }}</span>
+            <span>-{{ discount_application.total_allocated_amount | money }}</span>
+          </div>
+        {%- endfor -%}
+
+        {%- for shipping_method in order.shipping_methods -%}
+          <div class="order-totals__row">
+            <span>{{ 'customers.orders.shipping' | t }} ({{ shipping_method.title }})</span>
+            <span>{{ shipping_method.price | money }}</span>
+          </div>
+        {%- endfor -%}
+
+        {%- for tax_line in order.tax_lines -%}
+          <div class="order-totals__row">
+            <span>{{ 'customers.orders.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</span>
+            <span>{{ tax_line.price | money }}</span>
+          </div>
+        {%- endfor -%}
+
+        <div class="order-totals__row order-totals__row--total">
+          <span>{{ 'cart.total' | t }}</span>
+          <span>{{ order.total_price | money }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-sidebar">
+      {%- if order.shipping_address -%}
+        <div class="order-sidebar__block">
+          <h3>{{ 'customers.orders.shipping_address' | t }}</h3>
+          {{ order.shipping_address | format_address }}
+        </div>
+      {%- endif -%}
+
+      {%- if order.billing_address -%}
+        <div class="order-sidebar__block">
+          <h3>{{ 'customers.orders.billing_address' | t }}</h3>
+          {{ order.billing_address | format_address }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.order-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: gap 0.2s ease;
+}
+
+.order-back:hover {
+  gap: 0.5rem;
+}
+
+.order-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.order-meta__badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.order-meta__badge--paid,
+.order-meta__badge--fulfilled {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.order-meta__badge--pending,
+.order-meta__badge--unfulfilled {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+/* Layout */
+.order-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .order-details {
+    grid-template-columns: 1fr 18rem;
+  }
+}
+
+/* Items */
+.order-item {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto auto;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: center;
+}
+
+.order-item__image img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: var(--style-border-radius-cards);
+  background: var(--color-background-secondary);
+}
+
+.order-item__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+}
+
+.order-item__variant,
+.order-item__sku {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  display: block;
+}
+
+.order-item__qty {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.order-item__price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Totals */
+.order-totals {
+  padding-top: 1rem;
+}
+
+.order-totals__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.order-totals__row--discount {
+  color: #16a34a;
+}
+
+.order-totals__row--total {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* Sidebar */
+.order-sidebar__block {
+  background: var(--color-background-secondary, #f9fafb);
+  border-radius: var(--style-border-radius-cards);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.order-sidebar__block h3 {
+  font-family: var(--font-heading--family);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem;
+  color: var(--color-foreground);
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:customers.orders.title",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

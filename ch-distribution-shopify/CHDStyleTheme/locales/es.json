@@ -11,7 +11,14 @@
     "comment_form_email": "Correo electrónico",
     "comment_form_name": "Nombre",
     "comment_form_submit": "Publicar",
-    "comment_form_title": "Añadir un comentario"
+    "comment_form_title": "Añadir un comentario",
+    "comment_success": "Su comentario ha sido enviado con éxito.",
+    "read_more": "Leer más",
+    "no_articles": "Aún no hay artículos.",
+    "pagination": "Páginas del blog",
+    "previous_page": "Página anterior",
+    "next_page": "Página siguiente",
+    "back_to_blog": "Volver al blog"
   },
   "cart": {
     "title": "Carrito",
@@ -34,7 +41,74 @@
       "email": "Correo electrónico",
       "password": "Contraseña",
       "submit": "Iniciar sesión",
-      "title": "Iniciar sesión"
+      "title": "Iniciar sesión",
+      "forgot_password": "¿Olvidó su contraseña?",
+      "no_account": "¿No tiene cuenta?",
+      "create_account": "Crear cuenta"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "submit": "Registrarse",
+      "has_account": "¿Ya tiene una cuenta?"
+    },
+    "recover": {
+      "description": "Le enviaremos un correo para restablecer su contraseña.",
+      "submit": "Enviar",
+      "success": "Le hemos enviado un correo con un enlace para restablecer su contraseña.",
+      "back_to_login": "Volver al inicio de sesión"
+    },
+    "reset_password": {
+      "title": "Restablecer contraseña",
+      "password": "Nueva contraseña",
+      "password_confirm": "Confirmar contraseña",
+      "submit": "Restablecer contraseña"
+    },
+    "activate": {
+      "title": "Activar cuenta",
+      "description": "Cree una contraseña para activar su cuenta.",
+      "submit": "Activar cuenta"
+    },
+    "account": {
+      "title": "Mi cuenta",
+      "logout": "Cerrar sesión",
+      "orders": "Pedidos",
+      "no_orders": "Aún no ha realizado ningún pedido.",
+      "addresses": "Direcciones",
+      "manage_addresses": "Gestionar direcciones"
+    },
+    "orders": {
+      "title": "Pedidos",
+      "order_number": "Pedido",
+      "order_number_title": "Pedido {{ name }}",
+      "date": "Fecha",
+      "payment_status": "Pago",
+      "fulfillment_status": "Envío",
+      "total": "Total",
+      "shipping": "Envío",
+      "tax": "Impuesto",
+      "shipping_address": "Dirección de envío",
+      "billing_address": "Dirección de facturación"
+    },
+    "addresses": {
+      "title": "Direcciones",
+      "add_new": "Añadir nueva dirección",
+      "default": "Predeterminada",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "delete_confirm": "¿Está seguro de que desea eliminar esta dirección?",
+      "save": "Guardar",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "company": "Empresa",
+      "address1": "Dirección",
+      "address2": "Piso, departamento, etc.",
+      "zip": "Código postal",
+      "city": "Ciudad",
+      "country": "País",
+      "phone": "Teléfono",
+      "set_default": "Establecer como dirección predeterminada"
     }
   },
   "collections": {
@@ -45,9 +119,11 @@
   "gift_card": {
     "add_to_apple_wallet": "Añadir a Apple Wallet",
     "card": "Tarjeta regalo",
+    "code": "Código de tarjeta regalo",
     "expired": "Esta tarjeta regalo ha caducado",
     "expires_on": "Caduca el {{ expires_on }}",
-    "use_at_checkout": "Usar esta tarjeta regalo en el pago"
+    "use_at_checkout": "Usar esta tarjeta regalo en el pago",
+    "print": "Imprimir"
   },
   "password": {
     "title": "Esta tienda es privada",
@@ -88,7 +164,10 @@
   "general": {
     "skip_to_content": "Ir al contenido",
     "page": "Página",
-    "cart": "Carrito"
+    "cart": "Carrito",
+    "blog": "Blog",
+    "article": "Artículo",
+    "password": "Contraseña"
   },
   "sections": {
     "featured_collections": {

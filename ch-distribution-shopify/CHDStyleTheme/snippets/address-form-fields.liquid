@@ -1,0 +1,105 @@
+{% doc %}
+  Renders address form fields for the customer addresses page.
+
+  @param {form} form - The address form object
+
+  @example
+  {% render 'address-form-fields', form: form %}
+{% enddoc %}
+
+<div class="address-fields">
+  <div class="address-fields__row">
+    <div class="customer-auth__field">
+      <label for="{{ form.id }}-first-name">{{ 'customers.addresses.first_name' | t }}</label>
+      <input type="text" name="address[first_name]" id="{{ form.id }}-first-name" value="{{ form.first_name }}" autocomplete="given-name">
+    </div>
+    <div class="customer-auth__field">
+      <label for="{{ form.id }}-last-name">{{ 'customers.addresses.last_name' | t }}</label>
+      <input type="text" name="address[last_name]" id="{{ form.id }}-last-name" value="{{ form.last_name }}" autocomplete="family-name">
+    </div>
+  </div>
+
+  <div class="customer-auth__field">
+    <label for="{{ form.id }}-company">{{ 'customers.addresses.company' | t }}</label>
+    <input type="text" name="address[company]" id="{{ form.id }}-company" value="{{ form.company }}" autocomplete="organization">
+  </div>
+
+  <div class="customer-auth__field">
+    <label for="{{ form.id }}-address1">{{ 'customers.addresses.address1' | t }}</label>
+    <input type="text" name="address[address1]" id="{{ form.id }}-address1" value="{{ form.address1 }}" autocomplete="address-line1">
+  </div>
+
+  <div class="customer-auth__field">
+    <label for="{{ form.id }}-address2">{{ 'customers.addresses.address2' | t }}</label>
+    <input type="text" name="address[address2]" id="{{ form.id }}-address2" value="{{ form.address2 }}" autocomplete="address-line2">
+  </div>
+
+  <div class="address-fields__row">
+    <div class="customer-auth__field">
+      <label for="{{ form.id }}-zip">{{ 'customers.addresses.zip' | t }}</label>
+      <input type="text" name="address[zip]" id="{{ form.id }}-zip" value="{{ form.zip }}" autocomplete="postal-code">
+    </div>
+    <div class="customer-auth__field">
+      <label for="{{ form.id }}-city">{{ 'customers.addresses.city' | t }}</label>
+      <input type="text" name="address[city]" id="{{ form.id }}-city" value="{{ form.city }}" autocomplete="address-level2">
+    </div>
+  </div>
+
+  <div class="customer-auth__field">
+    <label for="{{ form.id }}-country">{{ 'customers.addresses.country' | t }}</label>
+    <select name="address[country]" id="{{ form.id }}-country" autocomplete="country">
+      {{ all_country_option_tags }}
+    </select>
+  </div>
+
+  <div class="customer-auth__field">
+    <label for="{{ form.id }}-phone">{{ 'customers.addresses.phone' | t }}</label>
+    <input type="tel" name="address[phone]" id="{{ form.id }}-phone" value="{{ form.phone }}" autocomplete="tel">
+  </div>
+
+  {%- if form.set_as_default_checkbox -%}
+    <div class="address-fields__checkbox">
+      <label>
+        {{ form.set_as_default_checkbox }}
+        {{ 'customers.addresses.set_default' | t }}
+      </label>
+    </div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+.address-fields__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.address-fields select {
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  border: 2px solid #d1d5db;
+  border-radius: var(--style-border-radius-inputs);
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  transition: border-color 0.15s ease;
+}
+
+.address-fields select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.address-fields__checkbox {
+  margin: 0.5rem 0 1rem;
+}
+
+.address-fields__checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+{% endstylesheet %}

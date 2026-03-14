@@ -1,0 +1,188 @@
+{% comment %}
+  CH Distribution — Kundenadressen
+{% endcomment %}
+
+<div class="account-page">
+  <a href="{{ routes.account_url }}" class="order-back">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    {{ 'customers.account.title' | t }}
+  </a>
+
+  <h1 class="account-page__title">{{ 'customers.addresses.title' | t }}</h1>
+
+  <button type="button" class="addresses__add-btn" onclick="document.getElementById('add-address-form').style.display = document.getElementById('add-address-form').style.display === 'none' ? 'block' : 'none'">
+    {{ 'customers.addresses.add_new' | t }}
+  </button>
+
+  {%- comment -%} Neue Adresse hinzufügen {%- endcomment -%}
+  <div id="add-address-form" style="display: none" class="address-form-wrapper">
+    <h2 class="address-form-wrapper__title">{{ 'customers.addresses.add_new' | t }}</h2>
+    {%- form 'customer_address', customer.new_address -%}
+      {% render 'address-form-fields', form: form %}
+      <button type="submit" class="customer-auth__submit">{{ 'customers.addresses.save' | t }}</button>
+    {%- endform -%}
+  </div>
+
+  {%- comment -%} Bestehende Adressen {%- endcomment -%}
+  {%- paginate customer.addresses by 10 -%}
+    <div class="addresses-grid">
+      {%- for address in customer.addresses -%}
+        <div class="address-card">
+          {%- if address == customer.default_address -%}
+            <span class="address-card__default">{{ 'customers.addresses.default' | t }}</span>
+          {%- endif -%}
+
+          <div class="address-card__content">
+            {{ address | format_address }}
+          </div>
+
+          <div class="address-card__actions">
+            <button type="button" class="address-card__edit" onclick="var el = document.getElementById('edit-address-{{ address.id }}'); el.style.display = el.style.display === 'none' ? 'block' : 'none'">
+              {{ 'customers.addresses.edit' | t }}
+            </button>
+            <button type="button" class="address-card__delete" data-confirm="{{ 'customers.addresses.delete_confirm' | t }}" onclick="if(confirm(this.dataset.confirm)){Shopify.postLink('{{ address.url }}',{parameters:{_method:'delete'}})}">
+              {{ 'customers.addresses.delete' | t }}
+            </button>
+          </div>
+
+          <div id="edit-address-{{ address.id }}" style="display: none" class="address-form-wrapper">
+            {%- form 'customer_address', address -%}
+              {% render 'address-form-fields', form: form %}
+              <button type="submit" class="customer-auth__submit">{{ 'customers.addresses.save' | t }}</button>
+            {%- endform -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="blog-pagination">
+        {{ paginate | default_pagination }}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% stylesheet %}
+.addresses__add-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--style-border-radius-buttons);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.addresses__add-btn:hover {
+  background-color: #162e78;
+  border-color: #162e78;
+}
+
+.address-form-wrapper {
+  background: var(--color-background-secondary, #f9fafb);
+  border-radius: var(--style-border-radius-cards);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 32rem;
+}
+
+.address-form-wrapper__title {
+  font-family: var(--font-heading--family);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.addresses-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .addresses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .addresses-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.address-card {
+  border: 1px solid #e5e7eb;
+  border-radius: var(--style-border-radius-cards);
+  padding: 1.25rem;
+  position: relative;
+}
+
+.address-card__default {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  background: rgba(3, 75, 174, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.address-card__content {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.address-card__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.address-card__edit,
+.address-card__delete {
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.address-card__edit {
+  color: var(--color-accent);
+}
+
+.address-card__edit:hover {
+  text-decoration: underline;
+}
+
+.address-card__delete {
+  color: #dc2626;
+}
+
+.address-card__delete:hover {
+  text-decoration: underline;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:customers.addresses.title",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

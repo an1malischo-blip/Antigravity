@@ -11,7 +11,14 @@
     "comment_form_email": "E-Mail",
     "comment_form_name": "Name",
     "comment_form_submit": "Absenden",
-    "comment_form_title": "Kommentar hinzufügen"
+    "comment_form_title": "Kommentar hinzufügen",
+    "comment_success": "Ihr Kommentar wurde erfolgreich gesendet.",
+    "read_more": "Weiterlesen",
+    "no_articles": "Noch keine Artikel vorhanden.",
+    "pagination": "Blog-Seiten",
+    "previous_page": "Vorherige Seite",
+    "next_page": "Nächste Seite",
+    "back_to_blog": "Zurück zum Blog"
   },
   "cart": {
     "title": "Warenkorb",
@@ -34,7 +41,74 @@
       "email": "E-Mail",
       "password": "Passwort",
       "submit": "Anmelden",
-      "title": "Anmeldung"
+      "title": "Anmeldung",
+      "forgot_password": "Passwort vergessen?",
+      "no_account": "Noch kein Konto?",
+      "create_account": "Konto erstellen"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "submit": "Registrieren",
+      "has_account": "Bereits ein Konto?"
+    },
+    "recover": {
+      "description": "Wir senden Ihnen eine E-Mail zum Zurücksetzen Ihres Passworts.",
+      "submit": "Absenden",
+      "success": "Wir haben Ihnen eine E-Mail mit einem Link zum Zurücksetzen Ihres Passworts gesendet.",
+      "back_to_login": "Zurück zur Anmeldung"
+    },
+    "reset_password": {
+      "title": "Passwort zurücksetzen",
+      "password": "Neues Passwort",
+      "password_confirm": "Passwort bestätigen",
+      "submit": "Passwort zurücksetzen"
+    },
+    "activate": {
+      "title": "Konto aktivieren",
+      "description": "Erstellen Sie ein Passwort, um Ihr Konto zu aktivieren.",
+      "submit": "Konto aktivieren"
+    },
+    "account": {
+      "title": "Mein Konto",
+      "logout": "Abmelden",
+      "orders": "Bestellungen",
+      "no_orders": "Sie haben noch keine Bestellungen aufgegeben.",
+      "addresses": "Adressen",
+      "manage_addresses": "Adressen verwalten"
+    },
+    "orders": {
+      "title": "Bestellungen",
+      "order_number": "Bestellung",
+      "order_number_title": "Bestellung {{ name }}",
+      "date": "Datum",
+      "payment_status": "Zahlung",
+      "fulfillment_status": "Versand",
+      "total": "Gesamt",
+      "shipping": "Versand",
+      "tax": "Steuer",
+      "shipping_address": "Lieferadresse",
+      "billing_address": "Rechnungsadresse"
+    },
+    "addresses": {
+      "title": "Adressen",
+      "add_new": "Neue Adresse hinzufügen",
+      "default": "Standard",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "delete_confirm": "Sind Sie sicher, dass Sie diese Adresse löschen möchten?",
+      "save": "Speichern",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "company": "Unternehmen",
+      "address1": "Adresse",
+      "address2": "Adresszusatz",
+      "zip": "PLZ",
+      "city": "Stadt",
+      "country": "Land",
+      "phone": "Telefon",
+      "set_default": "Als Standardadresse festlegen"
     }
   },
   "collections": {
@@ -45,9 +119,11 @@
   "gift_card": {
     "add_to_apple_wallet": "Zu Apple Wallet hinzufügen",
     "card": "Geschenkkarte",
+    "code": "Geschenkkarten-Code",
     "expired": "Diese Geschenkkarte ist abgelaufen",
     "expires_on": "Gültig bis {{ expires_on }}",
-    "use_at_checkout": "Geschenkkarte an der Kasse einlösen"
+    "use_at_checkout": "Geschenkkarte an der Kasse einlösen",
+    "print": "Drucken"
   },
   "password": {
     "title": "Dieser Shop ist privat",
@@ -88,7 +164,10 @@
   "general": {
     "skip_to_content": "Zum Inhalt springen",
     "page": "Seite",
-    "cart": "Warenkorb"
+    "cart": "Warenkorb",
+    "blog": "Blog",
+    "article": "Artikel",
+    "password": "Passwort"
   },
   "sections": {
     "featured_collections": {

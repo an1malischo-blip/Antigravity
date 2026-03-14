@@ -1,0 +1,256 @@
+{% comment %}
+  CH Distribution — Kunden-Login
+{% endcomment %}
+
+<div class="customer-auth">
+  <div class="customer-auth__card">
+    <h1 class="customer-auth__title">{{ 'customers.login.title' | t }}</h1>
+
+    {%- form 'customer_login' -%}
+      {%- if form.errors -%}
+        <div class="customer-auth__error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <div class="customer-auth__field">
+        <label for="customer-email">{{ 'customers.login.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="customer-email"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="customer-auth__field">
+        <label for="customer-password">{{ 'customers.login.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="customer-password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <a href="#recover" class="customer-auth__forgot" onclick="document.getElementById('recover-form').style.display='block'; this.closest('form').style.display='none'; return false;">
+        {{ 'customers.login.forgot_password' | t }}
+      </a>
+
+      <button type="submit" class="customer-auth__submit">
+        {{ 'customers.login.submit' | t }}
+      </button>
+    {%- endform -%}
+
+    <div id="recover-form" style="display:none">
+      <h2 class="customer-auth__subtitle">{{ 'customers.login.forgot_password' | t }}</h2>
+      <p class="customer-auth__text">{{ 'customers.recover.description' | t }}</p>
+
+      {%- form 'recover_customer_password' -%}
+        {%- if form.errors -%}
+          <div class="customer-auth__error">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        {%- if form.posted_successfully? -%}
+          <div class="customer-auth__success">
+            {{ 'customers.recover.success' | t }}
+          </div>
+        {%- endif -%}
+
+        <div class="customer-auth__field">
+          <label for="recover-email">{{ 'customers.login.email' | t }}</label>
+          <input
+            type="email"
+            name="email"
+            id="recover-email"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <button type="submit" class="customer-auth__submit">
+          {{ 'customers.recover.submit' | t }}
+        </button>
+      {%- endform -%}
+
+      <a href="#login" class="customer-auth__back" onclick="document.getElementById('recover-form').style.display='none'; document.querySelector('.customer-auth form').style.display='block'; return false;">
+        {{ 'customers.recover.back_to_login' | t }}
+      </a>
+    </div>
+
+    <div class="customer-auth__divider"></div>
+
+    <p class="customer-auth__register-prompt">
+      {{ 'customers.login.no_account' | t }}
+      <a href="{{ routes.account_register_url }}">{{ 'customers.login.create_account' | t }}</a>
+    </p>
+  </div>
+</div>
+
+{% stylesheet %}
+.customer-auth {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.customer-auth__card {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.customer-auth__title {
+  font-family: var(--font-heading--family);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+.customer-auth__subtitle {
+  font-family: var(--font-heading--family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.customer-auth__text {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.customer-auth__error {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: var(--style-border-radius-inputs);
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #dc2626;
+}
+
+.customer-auth__success {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: var(--style-border-radius-inputs);
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #16a34a;
+}
+
+.customer-auth__field {
+  margin-bottom: 1rem;
+}
+
+.customer-auth__field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--color-foreground);
+}
+
+.customer-auth__field input {
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  border: 2px solid #d1d5db;
+  border-radius: var(--style-border-radius-inputs);
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  transition: border-color 0.15s ease;
+}
+
+.customer-auth__field input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.customer-auth__forgot {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+  text-align: right;
+}
+
+.customer-auth__forgot:hover {
+  text-decoration: underline;
+}
+
+.customer-auth__submit {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--style-border-radius-buttons);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease;
+}
+
+.customer-auth__submit:hover {
+  background-color: #162e78;
+  border-color: #162e78;
+}
+
+.customer-auth__back {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.customer-auth__back:hover {
+  text-decoration: underline;
+}
+
+.customer-auth__divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 1.5rem 0;
+}
+
+.customer-auth__register-prompt {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.customer-auth__register-prompt a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.customer-auth__register-prompt a:hover {
+  text-decoration: underline;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:customers.login.title",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+{% comment %}
+  CH Distribution — Kunden-Registrierung
+{% endcomment %}
+
+<div class="customer-auth">
+  <div class="customer-auth__card">
+    <h1 class="customer-auth__title">{{ 'customers.register.title' | t }}</h1>
+
+    {%- form 'create_customer' -%}
+      {%- if form.errors -%}
+        <div class="customer-auth__error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <div class="customer-auth__field">
+        <label for="register-first-name">{{ 'customers.register.first_name' | t }}</label>
+        <input
+          type="text"
+          name="customer[first_name]"
+          id="register-first-name"
+          autocomplete="given-name"
+          required
+        >
+      </div>
+
+      <div class="customer-auth__field">
+        <label for="register-last-name">{{ 'customers.register.last_name' | t }}</label>
+        <input
+          type="text"
+          name="customer[last_name]"
+          id="register-last-name"
+          autocomplete="family-name"
+          required
+        >
+      </div>
+
+      <div class="customer-auth__field">
+        <label for="register-email">{{ 'customers.login.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="register-email"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="customer-auth__field">
+        <label for="register-password">{{ 'customers.login.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="register-password"
+          autocomplete="new-password"
+          required
+        >
+      </div>
+
+      <button type="submit" class="customer-auth__submit">
+        {{ 'customers.register.submit' | t }}
+      </button>
+    {%- endform -%}
+
+    <div class="customer-auth__divider"></div>
+
+    <p class="customer-auth__register-prompt">
+      {{ 'customers.register.has_account' | t }}
+      <a href="{{ routes.account_login_url }}">{{ 'customers.login.submit' | t }}</a>
+    </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:customers.register.title",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,261 @@
+{% comment %}
+  CH Distribution — Kundenkonto-Übersicht
+{% endcomment %}
+
+<div class="account-page">
+  <div class="account-page__header">
+    <h1 class="account-page__title">{{ 'customers.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="account-page__logout">{{ 'customers.account.logout' | t }}</a>
+  </div>
+
+  {%- comment -%} Bestellübersicht {%- endcomment -%}
+  <section class="account-section">
+    <h2 class="account-section__title">{{ 'customers.account.orders' | t }}</h2>
+
+    {%- if customer.orders.size > 0 -%}
+      <div class="account-orders">
+        <div class="account-orders__header">
+          <span>{{ 'customers.orders.order_number' | t }}</span>
+          <span>{{ 'customers.orders.date' | t }}</span>
+          <span>{{ 'customers.orders.payment_status' | t }}</span>
+          <span>{{ 'customers.orders.fulfillment_status' | t }}</span>
+          <span>{{ 'customers.orders.total' | t }}</span>
+        </div>
+
+        {%- for order in customer.orders -%}
+          <a href="{{ order.customer_url }}" class="account-order-row">
+            <span class="account-order-row__number">{{ order.name }}</span>
+            <span class="account-order-row__date">{{ order.created_at | date: '%d.%m.%Y' }}</span>
+            <span class="account-order-row__badge account-order-row__badge--{{ order.financial_status }}">
+              {{ order.financial_status_label }}
+            </span>
+            <span class="account-order-row__badge account-order-row__badge--{{ order.fulfillment_status }}">
+              {{ order.fulfillment_status_label }}
+            </span>
+            <span class="account-order-row__total">{{ order.total_net_amount | money }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="account-section__empty">{{ 'customers.account.no_orders' | t }}</p>
+    {%- endif -%}
+  </section>
+
+  {%- comment -%} Adressen-Link {%- endcomment -%}
+  <section class="account-section">
+    <div class="account-section__header-row">
+      <h2 class="account-section__title">{{ 'customers.account.addresses' | t }}</h2>
+      <a href="{{ routes.account_addresses_url }}" class="account-section__link">{{ 'customers.account.manage_addresses' | t }}</a>
+    </div>
+
+    {%- if customer.default_address -%}
+      <div class="account-address-card">
+        <p class="account-address-card__name">{{ customer.default_address.first_name }} {{ customer.default_address.last_name }}</p>
+        {%- if customer.default_address.company != blank -%}
+          <p>{{ customer.default_address.company }}</p>
+        {%- endif -%}
+        <p>{{ customer.default_address.street }}</p>
+        <p>{{ customer.default_address.zip }} {{ customer.default_address.city }}</p>
+        <p>{{ customer.default_address.country.name }}</p>
+      </div>
+    {%- endif -%}
+  </section>
+</div>
+
+{% stylesheet %}
+.account-page {
+  padding: 2rem 0 3rem;
+}
+
+.account-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.account-page__title {
+  font-family: var(--font-heading--family);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .account-page__title {
+    font-size: 2.2rem;
+  }
+}
+
+.account-page__logout {
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-decoration: none;
+  border: 1px solid #d1d5db;
+  padding: 0.4rem 1rem;
+  border-radius: var(--style-border-radius-buttons);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.account-page__logout:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Sections */
+.account-section {
+  margin-bottom: 2.5rem;
+}
+
+.account-section__title {
+  font-family: var(--font-heading--family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--color-foreground);
+}
+
+.account-section__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.account-section__link {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.account-section__link:hover {
+  text-decoration: underline;
+}
+
+.account-section__empty {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Orders Table */
+.account-orders__header {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .account-orders__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+    border-bottom: 2px solid #e5e7eb;
+  }
+}
+
+.account-order-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-decoration: none;
+  color: var(--color-foreground);
+  transition: background-color 0.15s ease;
+}
+
+.account-order-row:hover {
+  background: var(--color-background-secondary, #f9fafb);
+}
+
+@media (min-width: 768px) {
+  .account-order-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.account-order-row__number {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.account-order-row__date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.account-order-row__badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  background: #f3f4f6;
+  color: #6b7280;
+  width: fit-content;
+}
+
+.account-order-row__badge--paid {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.account-order-row__badge--fulfilled {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.account-order-row__badge--pending {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.account-order-row__badge--unfulfilled {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.account-order-row__total {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Address Card */
+.account-address-card {
+  background: var(--color-background-secondary, #f9fafb);
+  border-radius: var(--style-border-radius-cards);
+  padding: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 20rem;
+}
+
+.account-address-card__name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.account-address-card p {
+  margin: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:customers.account.title",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
