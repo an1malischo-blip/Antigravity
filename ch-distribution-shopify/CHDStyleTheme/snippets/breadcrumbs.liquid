@@ -1,0 +1,107 @@
+{% doc %}
+  Renders a breadcrumb navigation based on page type.
+
+  @example
+  {% render 'breadcrumbs' %}
+{% enddoc %}
+
+{%- unless request.page_type == 'index' -%}
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="{{ routes.root_url }}">{{ shop.name }}</a>
+      </li>
+
+      {%- if request.page_type == 'product' -%}
+        {%- if product.collections.size > 0 -%}
+          <li class="breadcrumbs__item">
+            <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+          </li>
+        {%- endif -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ product.title }}
+        </li>
+
+      {%- elsif request.page_type == 'collection' -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ collection.title }}
+        </li>
+
+      {%- elsif request.page_type == 'page' -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ page.title }}
+        </li>
+
+      {%- elsif request.page_type == 'blog' -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ blog.title }}
+        </li>
+
+      {%- elsif request.page_type == 'article' -%}
+        {%- if blog -%}
+          <li class="breadcrumbs__item">
+            <a href="{{ blog.url }}">{{ blog.title }}</a>
+          </li>
+        {%- endif -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ article.title }}
+        </li>
+
+      {%- elsif request.page_type == 'search' -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ 'search.title' | t }}
+        </li>
+
+      {%- elsif request.page_type == 'cart' -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ 'cart.title' | t }}
+        </li>
+
+      {%- elsif request.page_type == 'list-collections' -%}
+        <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
+          {{ 'collections.title' | t }}
+        </li>
+
+      {%- endif -%}
+    </ol>
+  </nav>
+{%- endunless -%}
+
+{% stylesheet %}
+.breadcrumbs {
+  padding: 1rem 0 0;
+}
+
+.breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+  content: '/';
+  margin-left: 0.25rem;
+  color: #d1d5db;
+}
+
+.breadcrumbs__item a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.breadcrumbs__item a:hover {
+  color: var(--color-accent);
+}
+
+.breadcrumbs__item--current {
+  color: var(--color-foreground);
+  font-weight: 500;
+}
+{% endstylesheet %}

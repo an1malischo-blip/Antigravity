@@ -85,6 +85,11 @@
       "trust_b2b": "Prix B2B"
     }
   },
+  "general": {
+    "skip_to_content": "Aller au contenu",
+    "page": "Page",
+    "cart": "Panier"
+  },
   "sections": {
     "featured_collections": {
       "products": "produits"

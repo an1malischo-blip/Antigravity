@@ -31,9 +31,16 @@
   </head>
 
   <body>
+    <a class="skip-to-content" href="#main-content">{{ 'general.skip_to_content' | t }}</a>
+
     {% sections 'header-group' %}
 
-    {{ content_for_layout }}
+    <main id="main-content" role="main">
+      <div class="page-width">
+        {% render 'breadcrumbs' %}
+      </div>
+      {{ content_for_layout }}
+    </main>
 
     {% sections 'footer-group' %}
   </body>

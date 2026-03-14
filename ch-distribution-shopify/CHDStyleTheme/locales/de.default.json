@@ -85,6 +85,11 @@
       "trust_b2b": "B2B-Preise"
     }
   },
+  "general": {
+    "skip_to_content": "Zum Inhalt springen",
+    "page": "Seite",
+    "cart": "Warenkorb"
+  },
   "sections": {
     "featured_collections": {
       "products": "Produkte"
